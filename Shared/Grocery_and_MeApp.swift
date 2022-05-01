@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct Grocery_and_MeApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
+  @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+  @StateObject var auth = Authentication()
+  
+  var body: some Scene {
+    WindowGroup {
+      HomeView(auth: auth)
+      .navigationViewStyle(.stack)
     }
+  }
 }

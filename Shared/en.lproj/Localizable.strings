@@ -1,0 +1,60 @@
+/* 
+  Localizable.strings
+  Grocery and Me
+
+  Created by 春音 on 16/4/22.
+  
+*/
+
+// MARK - Shared
+"LOADING" = "Loading";
+"LOADING_WITH_DOTS" = "Loading...";
+"DELETE" = "Delete";
+"FORM_CANCEL" = "Cancel";
+"UI_DONE" = "Done";
+"UI_EDIT" = "Edit";
+
+// MARK - Auth
+"EMAIL" = "E-mail";
+"PASSWORD" = "Password";
+"NAME" = "Name";
+"LOGIN" = "Login";
+"SIGNUP" = "Sign Up";
+"AUTH_NO_ACCOUNT" = "Don't have an account?";
+"AUTH_HAVE_ACCOUNT" = "Have an account?";
+"SIGNUP_SUCCESS_TITLE" = "Account created";
+"SIGNUP_SUCCESS_DESC" = "Please login to your account";
+"LOGOUT" = "Logout";
+"DELETE_ACCOUNT" = "Delete account";
+
+// MARK - Lists
+"NO_LIST" = "No Lists";
+"LISTS" = "Lists";
+"TAB_LISTS" = "Lists";
+"CREATED_BY %@" = "Created by %@";
+"LIST_ADD" = "Add list";
+"LIST_LEAVE" = "Leave List";
+"LIST_SHARED_WITH_YOU_ONLY" = "Only shared with you";
+"LIST_SHARED_WITH_YOU_AND %lld" = "Shared with you and %lld others";
+"FORM_LIST_TITLE_NEW" = "Add list";
+"FORM_LIST_TITLE_EDIT %@" = "Edit %@";
+"FORM_LIST_NAME" = "Name";
+"FORM_LIST_ICON" = "Icon Link";
+"FORM_LIST_COLOR" = "Hexcode";
+"FORM_LIST_COLOR_SELECT" = "Select a color";
+"FORM_LIST_SELECTED_COLOR" = "The color you selected";
+"FORM_LIST_SEC_TITLE_SHARE" = "Share List";
+"FORM_LIST_SEC_FOOTER_SHARE" = "Share a list so all the users will be able to edit";
+"FORM_LIST_SHARE_EMAIL" = "e-mail";
+"FORM_LIST_ADD_USER" = "ADD";
+"FORM_LIST_ADD" = "Add List";
+"FORM_LIST_EDIT" = "Save";
+"FORM_LIST_COLOR_DEFAULT" = "Default";
+"FORM_LIST_COLOR_CUSTOM" = "Custom";
+"FORM_LIST_DELETE" = "Delete";
+
+// MARK - Profile
+"TAB_PROFILE" = "Profile";
+
+// MARK - Settings
+"TAB_SETTINGS" = "Settings";

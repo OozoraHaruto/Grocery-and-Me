@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  Grocery and Me
+
+  Created by 春音 on 16/4/22.
+  
+*/
+
+"CFBundleDisplayName" = "買い物リスト";
+"NSHumanReadableCopyright" = "Copyright © 2021 太陽のアプリ. All rights reserved.";
