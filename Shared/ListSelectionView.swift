@@ -39,15 +39,19 @@ struct ListSelectionView: View {
           List{
             Section(){
               ForEach(listsObserver.createdLists!, id: \.self) { item in
-                ListCellView(listItem: item,
-                             editingList: $editingList)
+                NavigationLink(destination: ListDataWrapperView(listInfo: item, themeColor: item.getColor())) {
+                  ListCellView(listItem: item,
+                               editingList: $editingList)
+                }
               }.onDelete(perform: delete)
             }
             
             Section(){
               ForEach(listsObserver.sharedLists!, id: \.self) { item in
-                ListCellView(listItem: item,
-                             editingList: $editingList)
+                NavigationLink(destination: ListDataWrapperView(listInfo: item, themeColor: item.getColor())) {
+                  ListCellView(listItem: item,
+                               editingList: $editingList)
+                }
               }.onDelete(perform: leaveList)
             }
           }
@@ -175,7 +179,7 @@ struct ListCellView: View {
       } label: {
         Image(systemName: "info.circle")
           .foregroundColor(Color(UIColor.systemBlue))
-      }
+      }.buttonStyle(.plain)
     }
   }
 }

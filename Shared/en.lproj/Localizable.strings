@@ -6,15 +6,17 @@
   
 */
 
-// MARK - Shared
+// MARK: - Shared
 "LOADING" = "Loading";
 "LOADING_WITH_DOTS" = "Loading...";
 "DELETE" = "Delete";
 "FORM_CANCEL" = "Cancel";
 "UI_DONE" = "Done";
 "UI_EDIT" = "Edit";
+"UI_DELETE" = "Delete";
+"UI_SAVE" = "Save";
 
-// MARK - Auth
+// MARK: - Auth
 "EMAIL" = "E-mail";
 "PASSWORD" = "Password";
 "NAME" = "Name";
@@ -27,7 +29,7 @@
 "LOGOUT" = "Logout";
 "DELETE_ACCOUNT" = "Delete account";
 
-// MARK - Lists
+// MARK: - Lists
 "NO_LIST" = "No Lists";
 "LISTS" = "Lists";
 "TAB_LISTS" = "Lists";
@@ -53,8 +55,44 @@
 "FORM_LIST_COLOR_CUSTOM" = "Custom";
 "FORM_LIST_DELETE" = "Delete";
 
-// MARK - Profile
+// MARK: - List items
+"NO_ITEMS" = "No items";
+"ADD_ITEM" = "Add Item";
+"ADD_NEW_ITEM %@" = "Add \"%@\"";
+"FORM_LIST_ITEM_NAME" = "Item name";
+"FORM_LIST_ITEM_AMOUNT" = "Amount";
+"FORM_LIST_ITEM_AMOUNT_TYPE" = "Gram, etc...";
+"FORM_LIST_ITEM_PICTURE" = "Picture Link";
+"FORM_LIST_ITEM_CATEGORY_SELECT" = "Category";
+"FORM_LIST_ITEM_NOTE" = "Note";
+"FORM_LIST_ITEM_ADD" = "Add Item";
+
+// MARK: Categories
+// Edit in AppDelegate too
+"CATEGORY_ALCOHOL" = "Wine, Beer & Spirits";
+"CATEGORY_BABY" = "Baby";
+"CATEGORY_BAKERY" = "Bakery";
+"CATEGORY_BEVERAGES" = "Beverages";
+"CATEGORY_BREAKFAST" = "Breakfast & Cereal";
+"CATEGORY_CLOTHES" = "Clothes";
+"CATEGORY_CANNED_FOOD" = "Canned Goods";
+"CATEGORY_CONDIMENTS" = "Condiments & Dressigns";
+"CATEGORY_COOKING" = "Cooking & Baking";
+"CATEGORY_DAIRY" = "Dairy";
+"CATEGORY_DELI" = "Deli";
+"CATEGORY_FROZEN" = "Frozen Foods";
+"CATEGORY_GRAINS" = "Grains, Pasta & Sides";
+"CATEGORY_HEALTH" = "Health & Personal Care";
+"CATEGORY_HOUSEHOLD" = "Household & Cleaning";
+"CATEGORY_MEAT" = "Meat";
+"CATEGORY_PET" = "Pet Supplies";
+"CATEGORY_PRODUCE" = "Produce";
+"CATEGORY_SEAFOOD" = "Seafood";
+"CATEGORY_SNACKS" = "Snacks";
+"CATEGORY_OTHER" = "Other";
+
+// MARK: - Profile
 "TAB_PROFILE" = "Profile";
 
-// MARK - Settings
+// MARK: - Settings
 "TAB_SETTINGS" = "Settings";

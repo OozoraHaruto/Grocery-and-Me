@@ -6,15 +6,17 @@
   
 */
 
-// MARK - Shared
+// MARK: - Shared
 "LOADING" = "読み込み中";
 "LOADING_WITH_DOTS" = "読み込み中。。。";
 "DELETE" = "削除";
 "FORM_CANCEL" = "キャンセル";
 "UI_DONE" = "完了";
 "UI_EDIT" = "編集";
+"UI_DELETE" = "削除する";
+"UI_SAVE" = "保存する";
 
-// MARK - Auth
+// MARK: - Auth
 "EMAIL" = "メール";
 "PASSWORD" = "パスワード";
 "NAME" = "お名前";
@@ -27,7 +29,7 @@
 "LOGOUT" = "ログアウト";
 "DELETE_ACCOUNT" = "アカウントを削除する";
 
-// MARK - Lists
+// MARK: - Lists
 "NO_LIST" = "リストはありません";
 "LISTS" = "リスト";
 "TAB_LISTS" = "リスト";
@@ -53,8 +55,44 @@
 "FORM_LIST_COLOR_CUSTOM" = "カスタマイズ";
 "FORM_LIST_DELETE" = "このリストを削除します";
 
-// MARK - User
+// MARK: - List items
+"NO_ITEMS" = "リストが空っぽです　٩(>ω<*)و";
+"ADD_ITEM" = "ものを追加";
+"ADD_NEW_ITEM %@" = "\"%@\"を追加";
+"FORM_LIST_ITEM_NAME" = "商品名";
+"FORM_LIST_ITEM_AMOUNT" = "何個？";
+"FORM_LIST_ITEM_AMOUNT_TYPE" = "グラムとか";
+"FORM_LIST_ITEM_PICTURE" = "写真リンク";
+"FORM_LIST_ITEM_CATEGORY_SELECT" = "カテゴリー";
+"FORM_LIST_ITEM_NOTE" = "メモ";
+"FORM_LIST_ITEM_ADD" = "商品を追加";
+
+// MARK: Categories
+// Edit in AppDelegate too
+"CATEGORY_ALCOHOL" = "ワイン・ビール・お酒";
+"CATEGORY_BABY" = "ベビー";
+"CATEGORY_BAKERY" = "パン屋";
+"CATEGORY_BEVERAGES" = "飲み物";
+"CATEGORY_BREAKFAST" = "朝ごはん用";
+"CATEGORY_CLOTHES" = "服";
+"CATEGORY_CANNED_FOOD" = "缶詰";
+"CATEGORY_CONDIMENTS" = "調味料";
+"CATEGORY_COOKING" = "製菓用";
+"CATEGORY_DAIRY" = "牛乳・乳製品";
+"CATEGORY_DELI" = "Deli";
+"CATEGORY_FROZEN" = "冷凍食品";
+"CATEGORY_GRAINS" = "米・パスタ";
+"CATEGORY_HEALTH" = "健康";
+"CATEGORY_HOUSEHOLD" = "キッチン・日用品";
+"CATEGORY_MEAT" = "肉";
+"CATEGORY_PET" = "ペット用品";
+"CATEGORY_PRODUCE" = "野菜・果物";
+"CATEGORY_SEAFOOD" = "シーフード";
+"CATEGORY_SNACKS" = "おやつ";
+"CATEGORY_OTHER" = "他のもの";
+
+// MARK: - User
 "TAB_PROFILE" = "プロフィール";
 
-// MARK - Settings
+// MARK: - Settings
 "TAB_SETTINGS" = "設定";

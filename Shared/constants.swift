@@ -70,6 +70,11 @@ let ICON_HEIGHT_HOME_TAB: CGFloat = 20
 let ICON_HEIGHT_BUTTON: CGFloat = 20
 let ICON_HEIGHT_LIST_CELL: CGFloat = 20
 let ICON_HEIGHT_LIST_INFO: CGFloat = 200
+let ICON_HEIGHT_ITEM_LIST_HEADER: CGFloat = 15
+
+// MARK: Data
+var CATEGORIES: [ItemCategory] = [] // set in delegate
+var CATEGORIES_DICT: [String: ItemCategory] = [:] // generated in delegate
 
 // MARK: Tab
 enum TabType: Int, CaseIterable {
@@ -115,6 +120,7 @@ let DEF_LOGIN_EMAIL = "defUserEmail"
 // MARK: - Database
 let COL_USERS = "Users"
 let COL_LISTS = "Lists"
+let COL_LIST_LITEMS = "List Items"
 
 
 func generatePicLink(_ emailHash: String, size: Int = 200) -> String {
