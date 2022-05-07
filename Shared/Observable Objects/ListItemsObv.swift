@@ -5,9 +5,7 @@
 //  Created by 春音 on 2/5/22.
 //
 
-import Foundation
 import FirebaseFirestore
-
 
 class ListItemsObv: ObservableObject {
   let db = Firestore.firestore()

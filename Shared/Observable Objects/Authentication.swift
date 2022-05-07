@@ -5,11 +5,8 @@
 //  Created by 春音 on 16/4/22.
 //
 
-import Foundation
-import Firebase
 import FirebaseAuth
 import FirebaseFirestore
-
 
 class Authentication: ObservableObject {
   var handle: AuthStateDidChangeListenerHandle? = nil

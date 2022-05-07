@@ -5,9 +5,6 @@
 //  Created by 春音 on 24/4/22.
 //
 
-import Foundation
-import Firebase
-import FirebaseAuth
 import FirebaseFirestore
 
 

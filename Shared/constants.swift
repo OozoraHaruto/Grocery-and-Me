@@ -5,7 +5,6 @@
 //  Created by 春音 on 16/4/22.
 //
 
-import Foundation
 import SwiftUI
 
 // MARK: - UI

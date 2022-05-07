@@ -5,11 +5,9 @@
 //  Created by 春音 on 3/5/22.
 //
 
-import Foundation
 import FirebaseFirestore
 import FirebaseFunctions
 import FirebaseMessaging
-
 
 /**
   Subscribe to the current user to a topic
