@@ -123,7 +123,7 @@ let COL_LISTS = "Lists"
 let COL_LIST_LITEMS = "List Items"
 
 func generatePicLink(_ emailHash: String, size: Int = 200) -> String {
-  return String(format: "https://www.gravatar.com/avatar/%@?s=%d?f=retro", emailHash, size);
+  return String(format: "https://www.gravatar.com/avatar/%@?s=%d&f=retro", emailHash, size);
 }
 
 // MARK: - Notification
