@@ -7,6 +7,7 @@
 
 import SwiftUI
 import FirebaseFirestore
+import ImageViewerRemote
 import Introspect
 
 struct ListDataWrapperView: View {
@@ -15,9 +16,17 @@ struct ListDataWrapperView: View {
   var themeColor: Color = .bootBlue
   @State var editing = false
   @State var itemName = ""
+  
+  // For search results
   @State var searchResult: [ListItem] = []
+  
+  // for pushing edit form
   @State var editingItem: ListItem?
   @State var pushedView: Bool = false
+  
+  // for overlay image view
+  @State var imageViewerLink: String = ""
+  @State var showImageViewer: Bool = false
   
   var body: some View {
     VStack(alignment: .center, spacing: 0) {
@@ -80,7 +89,13 @@ struct ListDataWrapperView: View {
               .onTapGesture() { addItem() }
               .listRowSeparatorTint(themeColor)
             ForEach(searchResult, id: \.self) { item in
-              ListDataItemCellView(item: item, editing: true, themeColor: themeColor) {
+              ListDataItemCellView(item: item,
+                                   editing: true,
+                                   themeColor: themeColor,
+                                   imageClicked: { imageLink in
+                imageViewerLink = imageLink
+                showImageViewer = !showImageViewer
+              }){
                 editingItem = $0
               }
                 .onTapGesture(){
@@ -93,7 +108,13 @@ struct ListDataWrapperView: View {
             ForEach(itemsObserver.categorisedData!, id: \.id) { groupData in
               Section(content: {
                 ForEach(groupData.items, id: \.self) { item in
-                  ListDataItemCellView(item: item, editing: editing, themeColor: themeColor) {
+                  ListDataItemCellView(item: item,
+                                       editing: editing,
+                                       themeColor: themeColor,
+                                       imageClicked: { imageLink in
+                    imageViewerLink = imageLink
+                    showImageViewer = !showImageViewer
+                  }) {
                     editingItem = $0
                   }.onTapGesture(){
                     if editing {
@@ -145,7 +166,8 @@ struct ListDataWrapperView: View {
         editingItem = nil
         itemName = ""
       }
-    }.navigationBarTitle(listInfo.name, displayMode: .inline)
+    }.overlay(ImageViewerRemote(imageURL: $imageViewerLink, viewerShown: $showImageViewer))
+      .navigationBarTitle(listInfo.name, displayMode: .inline)
       .introspectNavigationController() {nav in
         nav.navigationBar.tintColor = UIColor(themeColor)
       }
@@ -165,28 +187,33 @@ struct ListDataItemCellView: View {
   let item: ListItem
   let editing: Bool
   let themeColor: Color
+  let imageClicked: (String) -> Void
   let editItem: (ListItem) -> Void
   
   var body: some View {
     HStack {
       if (item.picture != "") {
-        AsyncImage(url: URL(string: item.picture)) { phase in
-          if let image = phase.image {
-            image
-              .resizable()
-              .aspectRatio(contentMode: .fill)
-              .frame(width: ICON_HEIGHT_LIST_CELL, height: ICON_HEIGHT_LIST_CELL)
-              .cornerRadius(5)
-          } else if phase.error != nil {
-            FontAwesomeSVG(svgName: "binary-slash",
-                           frameHeight: ICON_HEIGHT_LIST_CELL,
-                           color: UIColor.red.cgColor,
-                           actAsSolid: false)
-          }else {
-            ProgressView()
+        Button {
+          imageClicked(item.picture)
+        } label: {
+          AsyncImage(url: URL(string: item.picture)) { phase in
+            if let image = phase.image {
+              image
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: ICON_HEIGHT_LIST_CELL, height: ICON_HEIGHT_LIST_CELL)
+                .cornerRadius(5)
+            } else if phase.error != nil {
+              FontAwesomeSVG(svgName: "binary-slash",
+                             frameHeight: ICON_HEIGHT_LIST_CELL,
+                             color: UIColor.red.cgColor,
+                             actAsSolid: false)
+            }else {
+              ProgressView()
+            }
           }
-        }
-        .frame(width: ICON_HEIGHT_LIST_CELL, height: ICON_HEIGHT_LIST_CELL)
+          .frame(width: ICON_HEIGHT_LIST_CELL, height: ICON_HEIGHT_LIST_CELL)
+        }.buttonStyle(.plain)
       }
       VStack (alignment: .leading) {
         HStack(alignment: .center, spacing: PADDING_STACK) {
