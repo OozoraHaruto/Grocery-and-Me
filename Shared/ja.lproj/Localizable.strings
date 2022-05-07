@@ -37,7 +37,7 @@
 "LIST_ADD" = "新しいリストを追加";
 "LIST_LEAVE" = "共用を外す";
 "LIST_SHARED_WITH_YOU_ONLY" = "あなただけと共用しています";
-"LIST_SHARED_WITH_YOU_AND %lld" = "あなたと他%lldと共用しています";
+"LIST_SHARED_WITH_YOU_AND %lld" = "あなたと他%lld人と共用しています";
 "FORM_LIST_TITLE_NEW" = "新しいリスト";
 "FORM_LIST_TITLE_EDIT %@" = "%@を編集";
 "FORM_LIST_NAME" = "タイトル";
