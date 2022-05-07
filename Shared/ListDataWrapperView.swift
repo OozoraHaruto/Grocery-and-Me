@@ -71,7 +71,7 @@ struct ListDataWrapperView: View {
               Text("ADD_NEW_ITEM \(itemName)")
               Spacer()
               Button{
-                editingItem = ListItem(name: itemName, amount: 1, amountType: "", picture: "", category: "", note: "", shown: true)
+                editingItem = ListItem(name: itemName, amount: 1, amountType: "", picture: "", category: "CATEGORY_OTHER", note: "", shown: true)
               } label: {
                 Image(systemName: "info.circle")
                   .foregroundColor(themeColor)
