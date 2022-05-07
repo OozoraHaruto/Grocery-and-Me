@@ -92,3 +92,6 @@ iOSInjectionProject/
 # Firebase Integration
 #
 GoogleService-Info.plist
+
+# Apple file system file
+.DS_Store
