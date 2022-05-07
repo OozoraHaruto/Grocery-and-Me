@@ -130,7 +130,8 @@ struct ListDataWrapperView: View {
                                                  amountType: editingItem?.amountType ?? "",
                                                  picture: editingItem?.picture ?? "",
                                                  category: editingItem?.category ?? "",
-                                                 note: editingItem?.note ?? ""),
+                                                 note: editingItem?.note ?? "",
+                                                 themeColor: themeColor),
                        isActive: $pushedView) {
           EmptyView()
         }.hidden()

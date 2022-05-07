@@ -17,6 +17,7 @@ struct ListItemForm: View {
   @State var picture: String = ""
   @State var category: String = ""
   @State var note: String = ""
+  var themeColor: Color = .bootBlue
   
   @State var loading = false
   
@@ -33,8 +34,15 @@ struct ListItemForm: View {
         TextField("FORM_LIST_ITEM_PICTURE", text: $picture)
         
         Picker("FORM_LIST_ITEM_CATEGORY_SELECT", selection: $category){
-          ForEach(CATEGORIES, id: \.self) {
-            Text($0.name).tag($0.key)
+          ForEach(CATEGORIES, id: \.self) { category in
+            HStack(alignment: .center, spacing: PADDING_STACK){
+              FontAwesomeSVG(svgName: category.icon,
+                             frameHeight: ICON_HEIGHT_ITEM_LIST_HEADER,
+                             color: themeColor.getCGColor(),
+                             actAsSolid: false)
+                .frame(width: ICON_HEIGHT_ITEM_LIST_HEADER, height: ICON_HEIGHT_ITEM_LIST_HEADER)
+              Text(category.name)
+            }.tag(category.key)
           }
         }
         
