@@ -140,7 +140,10 @@ struct ListDataWrapperView: View {
     }.onChange(of: editingItem) {
       pushedView = ($0 != nil)
     }.onChange(of: pushedView){
-      if (!$0) { editingItem = nil }
+      if (!$0) {
+        editingItem = nil
+        itemName = ""
+      }
     }.navigationBarTitle(listInfo.name, displayMode: .inline)
       .introspectNavigationController() {nav in
         nav.navigationBar.tintColor = UIColor(themeColor)
