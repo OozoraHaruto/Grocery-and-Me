@@ -54,6 +54,7 @@ class Authentication: ObservableObject {
       handle = Auth.auth().addStateDidChangeListener { [unowned self] (auth, user) in
         if let user = user, !registering {
           print("User logged in: \(user.uid)")
+          subscribe(to: "\(COL_USERS).\(user.uid)")
           self.uid = user.uid
           self.email = user.email
           if [self.name, self.photoURL].anyNil() {
@@ -85,6 +86,9 @@ class Authentication: ObservableObject {
             self.photoURL = user.photoURL?.absoluteString
           }
         } else {
+          if self.uid != "" {
+            unsubscribe(from: "\(COL_USERS).\(self.uid)")
+          }
           self.uid = ""
           self.name = ""
           self.email = ""

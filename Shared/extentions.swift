@@ -199,15 +199,6 @@ extension Color {
   }
 }
 
-extension Encodable {
-    subscript(key: String) -> Any? {
-        return dictionary[key]
-    }
-    var dictionary: [String: Any] {
-        return (try? JSONSerialization.jsonObject(with: JSON.encoder.encode(self))) as? [String: Any] ?? [:]
-    }
-}
-
 // https://stackoverflow.com/a/35601394
 extension Collection where Element == Optional<Any> {
   func allNil() -> Bool {
@@ -222,11 +213,3 @@ extension Collection where Element == Optional<Any> {
     return !allNil()
   }
 }
-
-#if canImport(UIKit)
-extension View {
-    func hideKeyboard() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
-}
-#endif

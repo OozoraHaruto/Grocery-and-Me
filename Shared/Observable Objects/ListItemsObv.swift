@@ -15,6 +15,7 @@ class ListItemsObv: ObservableObject {
   @Published var items: [ListItem]? = nil
   @Published var categorisedData: [ItemGroup]? = nil
   var itemListener: ListenerRegistration? = nil
+  var currentList: GroceryList? = nil
   
   init(_ id: String = "") {
     stopListen()
@@ -71,16 +72,17 @@ class ListItemsObv: ObservableObject {
     Method to used to initiate listener
    
     - parameters:
-      - uid: the logged in user's userid
+      - list: the grocery list that we are going to listen to
    
     - returns: Nothing
    */
-  func listen(_ id: String) {
+  func listen(_ list: GroceryList) {
     stopListen()
-    if (id == "") { return }
-    collectionListItems = Firestore.firestore().collection(COL_LISTS).document(id).collection(COL_LIST_LITEMS)
     
     if itemListener == nil {
+      currentList = list
+      collectionListItems = Firestore.firestore().collection(COL_LISTS).document(list.id!).collection(COL_LIST_LITEMS)
+      
       itemListener = collectionListItems!
         .addSnapshotListener {(querySnapshot, error) in
           
@@ -134,6 +136,7 @@ class ListItemsObv: ObservableObject {
     itemListener?.remove()
     itemListener = nil
     categorisedData = nil
+    currentList = nil
   }
   
   func categoriseItem(_ items: [ListItem]) -> [ItemGroup] {
@@ -160,6 +163,8 @@ class ListItemsObv: ObservableObject {
     grouped = grouped.sorted(by: {$0.category.name < $1.category.name})
     return grouped
   }
+  
+  // MARK: Firebase actions
   
   /**
     Add a list Item in the database
@@ -198,6 +203,7 @@ class ListItemsObv: ObservableObject {
         print("Error adding document: \(err)")
         completion(false)
       } else {
+        self.notifyUsers()
         completion(true)
       }
     }
@@ -244,6 +250,7 @@ class ListItemsObv: ObservableObject {
           print("Error editing document: \(err)")
           completion(false)
         } else {
+          self.notifyUsers()
           completion(true)
         }
       }
@@ -271,6 +278,7 @@ class ListItemsObv: ObservableObject {
         print("Error editing document: \(err)")
         completion(false)
       } else {
+        self.notifyUsers()
         completion(true)
       }
     }
@@ -318,5 +326,15 @@ class ListItemsObv: ObservableObject {
         completion(true)
       }
     }
+  }
+  
+  // MARK: - Notification
+  
+  private func notifyUsers() {
+    sendUpdatedListNoti(currentList!.id!,
+                        listName: currentList!.name,
+                        listPicture: currentList!.icon,
+                        creator: currentList!.creator,
+                        subcribedUsers: currentList!.sharedToUsers)
   }
 }

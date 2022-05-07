@@ -9,11 +9,23 @@ import SwiftUI
 import Firebase
 import FirebaseCore
 import FirebaseFirestore
+import FirebaseMessaging
+import FirebaseAnalytics
 
 class AppDelegate: NSObject, UIApplicationDelegate {
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
     FirebaseApp.configure()
     Firestore.firestore()
+    FirebaseConfiguration.shared.setLoggerLevel(.min)
+    
+    // Notification
+    UNUserNotificationCenter.current().delegate = self
+    let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+    UNUserNotificationCenter.current().requestAuthorization(
+      options: authOptions
+    ) { _, _ in }
+    application.registerForRemoteNotifications()
+    Messaging.messaging().delegate = self
     
     // Will be used everytime so init here will be faster
     CATEGORIES = [
@@ -69,5 +81,67 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     }
     
     return true
+  }
+}
+
+// MARK: - Notification
+// https://firebase.google.com/docs/cloud-messaging/ios/receive?authuser=0
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+  func application(_ application: UIApplication,
+                   didReceiveRemoteNotification userInfo: [AnyHashable: Any],
+                   fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult)
+                     -> Void) {
+    print(userInfo)
+    Messaging.messaging().appDidReceiveMessage(userInfo)
+
+    completionHandler(.noData)
+  }
+  
+  func application(_ application: UIApplication,
+                   didFailToRegisterForRemoteNotificationsWithError error: Error) {
+    print("Unable to register for remote notifications: \(error.localizedDescription)")
+  }
+  
+  func userNotificationCenter(_ center: UNUserNotificationCenter,
+                              willPresent notification: UNNotification,
+                              withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+    let userInfo = notification.request.content.userInfo
+    print(userInfo)
+    Messaging.messaging().appDidReceiveMessage(userInfo)
+    
+    completionHandler([[.banner, .sound]])
+  }
+
+  func userNotificationCenter(_ center: UNUserNotificationCenter,
+                              didReceive response: UNNotificationResponse,
+                              withCompletionHandler completionHandler: @escaping () -> Void) {
+    let userInfo = response.notification.request.content.userInfo
+    print(userInfo)
+    Messaging.messaging().appDidReceiveMessage(userInfo)
+    
+    completionHandler()
+  }
+  
+  func application(_ application: UIApplication,
+                   didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+    Messaging.messaging().apnsToken = deviceToken
+  }
+
+  private func process(_ notification: UNNotification) {
+    let userInfo = notification.request.content.userInfo
+    UIApplication.shared.applicationIconBadgeNumber = 0
+    Messaging.messaging().appDidReceiveMessage(userInfo)
+  }
+}
+
+extension AppDelegate: MessagingDelegate {
+  func messaging(_ messaging: Messaging,
+                 didReceiveRegistrationToken fcmToken: String?) {
+    let tokenDict = ["token": fcmToken ?? ""]
+    NotificationCenter.default.post(
+      name: Notification.Name("FCMToken"),
+      object: nil,
+      userInfo: tokenDict)
   }
 }

@@ -136,7 +136,7 @@ struct ListDataWrapperView: View {
         }.hidden()
       }
     }.onAppear() {
-      itemsObserver.listen(listInfo.id!)
+      itemsObserver.listen(listInfo)
     }.onChange(of: editingItem) {
       pushedView = ($0 != nil)
     }.onChange(of: pushedView){

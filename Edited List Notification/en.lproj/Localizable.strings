@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  Grocery and Me
+
+  Created by 春音 on 4/5/22.
+  
+*/
+
+// MARK: - Edited List
+"NOTI_UNKOWN_LIST" = "a list";
+"UNKOWN_USER" = "Someone";
+"NOTI_EDIT_LIST_HEADER" = "List edited";
+"NOTI_EDIT_LIST_BODY" = "%1$@ edited %2$@";
