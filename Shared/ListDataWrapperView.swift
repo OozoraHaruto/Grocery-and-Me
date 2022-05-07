@@ -46,8 +46,6 @@ struct ListDataWrapperView: View {
         
         if editing {
           Button {
-//            editing = false
-//            itemName = ""
             hideKeyboard()
           } label: {
             Text("UI_DONE")
