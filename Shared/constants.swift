@@ -7,47 +7,6 @@
 
 import Foundation
 import SwiftUI
-import SwiftMessages
-
-// MARK: - SwiftMessages
-let boldTextAttribute = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 17)]
-func getSwiftMessageAlertPopConfig() -> SwiftMessages.Config{
-  var config = SwiftMessages.Config()
-
-  config.presentationStyle = .center
-  config.presentationContext = .window(windowLevel: .alert)
-  config.duration = .forever
-  config.dimMode = .gray(interactive: true)
-
-  return config
-}
-
-func getSwiftMessageStatusLineConfig() -> SwiftMessages.Config{
-  var config = SwiftMessages.Config()
-  
-  config.presentationStyle = .top
-  config.presentationContext = .window(windowLevel: .statusBar)
-  config.duration = .seconds(seconds: 5)
-//  config.dimMode = .gray(interactive: true)
-  
-  return config
-}
-
-func getSwiftMessageBasicView(
-  layout: MessageView.Layout = .cardView,
-  theme: Theme = .warning,
-  radius: CGFloat = 10
-) -> MessageView {
-  let view = MessageView.viewFromNib(layout: layout)
-  
-  view.configureTheme(theme)
-  view.configureDropShadow()
-  view.layoutMarginAdditions = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
-  (view.backgroundView as? CornerRoundingView)?.cornerRadius = radius
-  view.button?.isHidden = true
-  
-  return view
-}
 
 // MARK: - UI
 // MARK: Padding
@@ -94,26 +53,6 @@ enum TabType: Int, CaseIterable {
   }
 }
 
-// MARK: List
-func getListFormColor(selectColor: String, typedColor: String) -> String {
-  if selectColor.starts(with: "#") {
-    return selectColor
-  } else if selectColor == "FORM_LIST_COLOR_CUSTOM".localized {
-    if typedColor.starts(with: "#") {
-      return typedColor
-    }
-  }
-  return "Default"
-}
-
-func getListColor(color: String) -> Color {
-  if color.starts(with: "#") {
-    return Color(hex: color)
-  } else {
-    return Color(uiColor: .label)
-  }
-}
-
 // MARK: - Defaults
 let DEF_LOGIN_EMAIL = "defUserEmail"
 
@@ -121,10 +60,6 @@ let DEF_LOGIN_EMAIL = "defUserEmail"
 let COL_USERS = "Users"
 let COL_LISTS = "Lists"
 let COL_LIST_LITEMS = "List Items"
-
-func generatePicLink(_ emailHash: String, size: Int = 200) -> String {
-  return String(format: "https://www.gravatar.com/avatar/%@?s=%d&f=retro", emailHash, size);
-}
 
 // MARK: - Notification
 let NOTI_MIN_TIME_BETWEEN_NOTI: Double = 30 * -60
