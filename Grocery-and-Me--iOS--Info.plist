@@ -4,5 +4,14 @@
 <dict>
 	<key>FirebaseAppDelegateProxyEnabled</key>
 	<false/>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIColorName</key>
+		<string>bgGrayLight</string>
+		<key>UIImageName</key>
+		<string>ListImage</string>
+		<key>UIImageRespectsSafeAreaInsets</key>
+		<true/>
+	</dict>
 </dict>
 </plist>
