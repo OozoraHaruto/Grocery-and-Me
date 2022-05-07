@@ -12,7 +12,7 @@ import Introspect
 
 struct ListDataWrapperView: View {
   @StateObject var itemsObserver: ListItemsObv = ListItemsObv()
-  let listInfo: GroceryList
+  let listInfo: GroceryList?
   var themeColor: Color = .bootBlue
   @State var editing = false
   @State var itemName = ""
@@ -156,7 +156,9 @@ struct ListDataWrapperView: View {
         }.hidden()
       }
     }.onAppear() {
-      itemsObserver.listen(listInfo)
+      if let listInfo = listInfo {
+        itemsObserver.listen(listInfo)
+      }
     }.onChange(of: editingItem) {
       pushedView = ($0 != nil)
     }.onChange(of: pushedView){
@@ -165,7 +167,7 @@ struct ListDataWrapperView: View {
         itemName = ""
       }
     }.overlay(ImageViewerRemote(imageURL: $imageViewerLink, viewerShown: $showImageViewer))
-      .navigationBarTitle(listInfo.name, displayMode: .inline)
+      .navigationBarTitle(listInfo?.name ?? "", displayMode: .inline)
       .introspectNavigationController() {nav in
         nav.navigationBar.tintColor = UIColor(themeColor)
       }

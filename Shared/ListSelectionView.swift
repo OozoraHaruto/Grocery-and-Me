@@ -9,10 +9,15 @@ import SwiftUI
 
 struct ListSelectionView: View {
   @ObservedObject var auth: Authentication
+  @ObservedObject var navBarObserver: NavBarObv
+  
   @StateObject var listsObserver: ListsObv = ListsObv()
   @State var presentedCreateView = false
   @State var editingList: GroceryList?
   @State var presentEditingView = false
+  
+  @State var pushingItem: GroceryList?
+  @State var pushedView = false
   
   var body: some View {
     NavigationView {
@@ -39,22 +44,26 @@ struct ListSelectionView: View {
           List{
             Section(){
               ForEach(listsObserver.createdLists!, id: \.self) { item in
-                NavigationLink(destination: ListDataWrapperView(listInfo: item, themeColor: item.getColor())) {
-                  ListCellView(listItem: item,
-                               editingList: $editingList)
-                }
+                ListCellView(listItem: item,
+                             editingList: $editingList)
+                  .onTapGesture() { pushingItem = item }
               }.onDelete(perform: delete)
             }
             
             Section(){
               ForEach(listsObserver.sharedLists!, id: \.self) { item in
-                NavigationLink(destination: ListDataWrapperView(listInfo: item, themeColor: item.getColor())) {
-                  ListCellView(listItem: item,
-                               editingList: $editingList)
-                }
+                ListCellView(listItem: item,
+                             editingList: $editingList)
+                  .onTapGesture() { pushingItem = item }
               }.onDelete(perform: leaveList)
             }
           }
+        }
+        
+        NavigationLink(destination: ListDataWrapperView(listInfo: pushingItem,
+                                                        themeColor: pushingItem?.getColor() ?? .bootBlue),
+                       isActive: $pushedView) {
+          EmptyView()
         }
       }.sheet(isPresented: $presentedCreateView) {
         ListAdd(presented: $presentedCreateView,
@@ -84,6 +93,13 @@ struct ListSelectionView: View {
       }
       .onChange(of: auth.uid) {newValue in
         listsObserver.listen(auth.uid)
+      }.onChange(of: pushingItem) {newValue in
+        pushedView = (newValue != nil)
+        navBarObserver.setNavBar((newValue == nil))
+      }.onChange(of: pushedView){
+        if (!$0) {
+          pushingItem = nil
+        }
       }.onChange(of: editingList) {newValue in
         presentEditingView = (newValue != nil)
       }.onAppear(perform: {
@@ -180,16 +196,16 @@ struct ListCellView: View {
         Image(systemName: "info.circle")
           .foregroundColor(Color(UIColor.systemBlue))
       }.buttonStyle(.plain)
-    }
+    }.contentShape(Rectangle())
   }
 }
 
 struct ListSelectionView_Previews: PreviewProvider {
   static var previews: some View {
     Group {
-      ListSelectionView(auth: Authentication(loggedIn: false), listsObserver: ListsObv(haveData: true))
+      ListSelectionView(auth: Authentication(loggedIn: false), navBarObserver: NavBarObv(), listsObserver: ListsObv(haveData: true))
         .environment(\.locale, .init(identifier: "ja"))
-      ListSelectionView(auth: Authentication(loggedIn: false), listsObserver: ListsObv(haveData: false))
+      ListSelectionView(auth: Authentication(loggedIn: false), navBarObserver: NavBarObv(), listsObserver: ListsObv(haveData: false))
         .environment(\.locale, .init(identifier: "ja"))
     }
   }

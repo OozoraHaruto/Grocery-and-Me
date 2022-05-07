@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct CustomTabView<Content: View>: View {
+  @ObservedObject var navBarObserver: NavBarObv
   let tabs: [TabItemData]
   @Binding var selectedIndex: Int
   @ViewBuilder let content: (Int) -> Content
@@ -22,18 +23,19 @@ struct CustomTabView<Content: View>: View {
         }
       }
       
-      VStack {
-        Spacer()
-        TabBottomView(tabbarItems: tabs, selectedIndex: $selectedIndex)
+      if navBarObserver.showNavBar {
+        VStack {
+          Spacer()
+          TabBottomView(tabbarItems: tabs, selectedIndex: $selectedIndex)
+        }.padding(.bottom, 8)
       }
-      .padding(.bottom, 8)
     }
   }
 }
 
 struct CustomTabView_Previews: PreviewProvider {
     static var previews: some View {
-      CustomTabView(tabs: TabType.allCases.map({ $0.tabItem }), selectedIndex: .constant(0)) { index in
+      CustomTabView(navBarObserver: NavBarObv(), tabs: TabType.allCases.map({ $0.tabItem }), selectedIndex: .constant(0)) { index in
         EmptyView()
       }
     }

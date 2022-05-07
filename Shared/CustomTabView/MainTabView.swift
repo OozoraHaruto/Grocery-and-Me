@@ -10,10 +10,13 @@ import SwiftUI
 
 struct MainTabView: View {
   @ObservedObject var auth: Authentication
+  @StateObject var navBarObserver: NavBarObv = NavBarObv()
   @State var selectedIndex: Int = 0
   
   var body: some View {
-    CustomTabView(tabs: TabType.allCases.map({ $0.tabItem }), selectedIndex: $selectedIndex) { index in
+    CustomTabView(navBarObserver:navBarObserver,
+                  tabs: TabType.allCases.map({ $0.tabItem }),
+                  selectedIndex: $selectedIndex) { index in
       let type = TabType(rawValue: index) ?? .list
       getTabView(type: type)
     }
@@ -23,7 +26,7 @@ struct MainTabView: View {
   func getTabView(type: TabType) -> some View {
     switch type {
     case .list:
-      ListSelectionView(auth: auth)
+      ListSelectionView(auth: auth, navBarObserver: navBarObserver)
     case .profile:
       ProfileView(auth: auth)
     case .settings:
