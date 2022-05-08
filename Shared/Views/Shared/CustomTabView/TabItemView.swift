@@ -17,19 +17,19 @@ struct TabItemView: View {
       if (isSelected) { // Using ternary operator doesn't work
         FontAwesomeSVG(svgName: data.image,
                        frameHeight: ICON_HEIGHT_HOME_TAB,
-                       color: Color.blueDuo.getCGColor())
+                       color: Color.colTabIconSelected.getCGColor())
           .frame(width: ICON_HEIGHT_HOME_TAB, height: ICON_HEIGHT_HOME_TAB, alignment: .center)
       } else {
         FontAwesomeSVG(svgName: data.image,
                        frameHeight: ICON_HEIGHT_HOME_TAB,
-                       color: Color.bootGray.getCGColor())
+                       color: Color.colTabIconUnSelected.getCGColor())
           .frame(width: ICON_HEIGHT_HOME_TAB, height: ICON_HEIGHT_HOME_TAB, alignment: .center)
       }
       
       Spacer().frame(height: 4)
       
       Text(data.title.localized)
-        .foregroundColor(isSelected ? .black : .gray)
+        .foregroundColor(isSelected ? .colTabIconSelected : .colTabIconUnSelected)
         .font(.caption)
     }.padding()
   }

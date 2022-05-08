@@ -80,6 +80,14 @@ extension Color {
     return Color.init("borderColor")
   }
   
+  static var colTabIconSelected: Color{
+    return Color.init("colTabIconSelected")
+  }
+  
+  static var colTabIconUnSelected: Color{
+    return Color.init("colTabIconUnSelected")
+  }
+  
   public init(hex: String) { // https://www.hackingwithswift.com/example-code/uicolor/how-to-convert-a-hex-color-to-a-uicolor
     let r, g, b, a: CGFloat
     
