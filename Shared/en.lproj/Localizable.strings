@@ -96,3 +96,18 @@
 
 // MARK: - Settings
 "TAB_SETTINGS" = "Settings";
+"USAGE_HEADER_ICON" = "Icons";
+"USAGE_HEADER_PACKAGES" = "Packages";
+"VERSION %@" = "Version %@";
+"PROJECT_AUTHOR %@" = "(%@)";
+
+// MARK: Icons
+"USAGE_APP_ICON" = "App Icon";
+"USAGE_SVG_ICON" = "SVG Icons";
+
+// MARK: Packages
+"USAGE_IMAGE_LIGHTBOX" = "Lightbox";
+"USAGE_SVG_RENDERER" = "SVG Renderer";
+"USAGE_ALERTS" = "Alerts";
+"USAGE_INTROSPECT" = "Introspect";
+"USAGE_DATABASE_NOTI" = "Database and Notifications";

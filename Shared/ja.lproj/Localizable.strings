@@ -96,3 +96,18 @@
 
 // MARK: - Settings
 "TAB_SETTINGS" = "設定";
+"USAGE_HEADER_ICON" = "アイコン";
+"USAGE_HEADER_PACKAGES" = "パッケージ";
+"VERSION %@" = "バージョン %@";
+"PROJECT_AUTHOR %@" = "（%@さん）";
+
+// MARK: Icons
+"USAGE_APP_ICON" = "アプリのアイコン";
+"USAGE_SVG_ICON" = "その他のアイコン";
+
+// MARK: Packages
+"USAGE_IMAGE_LIGHTBOX" = "ライトボックス";
+"USAGE_SVG_RENDERER" = "SVG レンダリング";
+"USAGE_ALERTS" = "警報";
+"USAGE_INTROSPECT" = "イントロスペク";
+"USAGE_DATABASE_NOTI" = "データーベースと通知";
