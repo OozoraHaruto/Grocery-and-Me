@@ -58,7 +58,7 @@ let DEF_LOGIN_EMAIL = "defUserEmail"
 // MARK: - Database
 let COL_USERS = "Users"
 let COL_LISTS = "Lists"
-let COL_LIST_LITEMS = "List Items"
+let COL_LIST_LITEMS = "Items"
 
 // MARK: - Notification
 let NOTI_MIN_TIME_BETWEEN_NOTI: Double = 30 * -60
