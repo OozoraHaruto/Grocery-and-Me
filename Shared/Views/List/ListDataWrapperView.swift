@@ -14,7 +14,7 @@ struct ListDataWrapperView: View {
   @StateObject var itemsObserver: ListItemsObv = ListItemsObv()
   let listInfo: GroceryList?
   var themeColor: Color = .bootBlue
-  @State var editing = false
+  @FocusState var editing: Bool
   @State var itemName = ""
   
   // For search results
@@ -32,13 +32,12 @@ struct ListDataWrapperView: View {
     VStack(alignment: .center, spacing: 0) {
       HStack(alignment: .center, spacing: PADDING_STACK) {
         Spacer(minLength: PADDING_STACK)
-        TextField("ADD_ITEM", text: $itemName, onEditingChanged: {
-          editing = $0
-        }).onChange(of: itemName) { _ in
+        TextField("ADD_ITEM", text: $itemName).onChange(of: itemName) { _ in
           itemsObserver.searchInItems(itemName) {
             searchResult = $0
           }
         }
+          .focused($editing, equals: true)
           .font(.body)
           .textFieldStyle(.roundedBorder)
           .submitLabel(.return)
@@ -46,7 +45,7 @@ struct ListDataWrapperView: View {
         
         if editing {
           Button {
-            hideKeyboard()
+            editing = false
           } label: {
             Text("UI_DONE")
           }
@@ -165,6 +164,10 @@ struct ListDataWrapperView: View {
       if (!$0) {
         editingItem = nil
         itemName = ""
+        // Call after some time
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+          editing = true
+        }
       }
     }.overlay(ImageViewerRemote(imageURL: $imageViewerLink, viewerShown: $showImageViewer))
       .navigationBarTitle(listInfo?.name ?? "", displayMode: .inline)
