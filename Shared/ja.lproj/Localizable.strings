@@ -98,7 +98,7 @@
 "TAB_SETTINGS" = "設定";
 "USAGE_HEADER_ICON" = "アイコン";
 "USAGE_HEADER_PACKAGES" = "パッケージ";
-"VERSION %@" = "バージョン %@";
+"VERSION" = "バージョン %1$@ (%2$@)";
 "PROJECT_AUTHOR %@" = "（%@さん）";
 
 // MARK: Icons

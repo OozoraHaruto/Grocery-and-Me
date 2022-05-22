@@ -51,7 +51,9 @@ struct SettingsView: View {
             }
           }
           
-          Section(footer: Text("VERSION \((Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String)!)")){
+          Section(footer: Text(String.localizedStringWithFormat("VERSION".localized,
+            (Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String)!,
+            (Bundle.main.infoDictionary?["CFBundleVersion"] as? String)!))){
             EmptyView()
           }
         }.listStyle(.grouped)
