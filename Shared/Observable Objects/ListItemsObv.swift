@@ -241,6 +241,7 @@ class ListItemsObv: ObservableObject {
     if (category != itemData.category) { diff["category"] = category }
     let nte = note.trimmingCharacters(in: .whitespacesAndNewlines)
     if (nte != itemData.note) { diff["note"] = nte }
+    if (true != itemData.shown) { diff["shown"] = true }
 
     if diff.count > 0 {
       self.collectionListItems!.document(itemData.id!).updateData(diff) { err in
