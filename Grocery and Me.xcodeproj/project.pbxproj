@@ -328,7 +328,7 @@
 		64F42D472821487F0077FABC /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 64F42D462821487F0077FABC /* FirebaseStorageCombine-Community */; };
 		64F42D492821487F0077FABC /* FirebaseStorageSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 64F42D482821487F0077FABC /* FirebaseStorageSwift-Beta */; };
 		64F42D62282152590077FABC /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F42D61282152590077FABC /* NotificationService.swift */; };
-		64F42D66282152590077FABC /* Edited List Notification.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 64F42D5F282152590077FABC /* Edited List Notification.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		64F42D66282152590077FABC /* Edited List Notification.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 64F42D5F282152590077FABC /* Edited List Notification.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		64F42D6C2821529F0077FABC /* FirebaseInAppMessaging-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 64F42D6B2821529F0077FABC /* FirebaseInAppMessaging-Beta */; };
 		64F42D6E2821529F0077FABC /* FirebaseInAppMessagingSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 64F42D6D2821529F0077FABC /* FirebaseInAppMessagingSwift-Beta */; };
 		64F42D702821529F0077FABC /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 64F42D6F2821529F0077FABC /* FirebaseMessaging */; };
@@ -442,6 +442,7 @@
 		64770FD8280ABAFF00DD1975 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		64770FDA280ABB0600DD1975 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		64770FE0280ABD5400DD1975 /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
+		6487777C2842642C00CAFCEF /* Edited List Notification.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Edited List Notification.entitlements"; sourceTree = "<group>"; };
 		6494A64D282625A200118D2A /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		6494A652282625D800118D2A /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		6494A657282625F700118D2A /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
@@ -812,6 +813,7 @@
 		64F42D60282152590077FABC /* Edited List Notification */ = {
 			isa = PBXGroup;
 			children = (
+				6487777C2842642C00CAFCEF /* Edited List Notification.entitlements */,
 				64F42D61282152590077FABC /* NotificationService.swift */,
 				64F42D63282152590077FABC /* Info.plist */,
 				64CE5BDE282268E4008D4EC1 /* Localizable.strings */,
@@ -1403,6 +1405,7 @@
 		};
 		64F42D65282152590077FABC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = 64F42D5E282152590077FABC /* Edited List Notification */;
 			targetProxy = 64F42D64282152590077FABC /* PBXContainerItemProxy */;
 		};
@@ -1568,7 +1571,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1577,6 +1580,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.taiyouapps.Grocery-and-Me";
 				PRODUCT_NAME = "Grocery and Me";
 				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1601,7 +1605,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1610,6 +1614,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.taiyouapps.Grocery-and-Me";
 				PRODUCT_NAME = "Grocery and Me";
 				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1755,6 +1760,7 @@
 		64F42D68282152590077FABC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Edited List Notification/Edited List Notification.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 220522;
 				DEVELOPMENT_TEAM = 84BDDMKF3C;
@@ -1773,6 +1779,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1782,6 +1789,7 @@
 		64F42D69282152590077FABC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Edited List Notification/Edited List Notification.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 220522;
 				DEVELOPMENT_TEAM = 84BDDMKF3C;
@@ -1800,6 +1808,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
