@@ -24,10 +24,7 @@ struct CustomTabView<Content: View>: View {
       }
       
       if navBarObserver.showNavBar {
-        VStack {
-          Spacer()
-          TabBottomView(tabbarItems: tabs, selectedIndex: $selectedIndex)
-        }.padding(.bottom, 8)
+        TabBottomView(tabbarItems: tabs, selectedIndex: $selectedIndex)
       }
     }
   }

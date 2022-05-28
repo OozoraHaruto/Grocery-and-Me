@@ -10,28 +10,39 @@ import SwiftUI
 
 struct TabBottomView: View {
   let tabbarItems: [TabItemData]
-  let width: CGFloat = UIScreen.main.bounds.width - 32
   @Binding var selectedIndex: Int
   
   var body: some View {
-    HStack {
-      Spacer()
-      
-      ForEach(0 ..< tabbarItems.count, id:\.self) { index in
-        let item = tabbarItems[index]
-        Button {
-          self.selectedIndex = index
-        } label: {
-          let isSelected = selectedIndex == index
-          TabItemView(data: item, isSelected: isSelected)
-        }
+    GeometryReader{ geometry in
+      VStack {
         Spacer()
-      }
+        
+        HStack {
+          Spacer()
+          HStack {
+            Spacer()
+            
+            ForEach(0 ..< tabbarItems.count, id:\.self) { index in
+              let item = tabbarItems[index]
+              Button {
+                self.selectedIndex = index
+              } label: {
+                let isSelected = selectedIndex == index
+                TabItemView(data: item, isSelected: isSelected)
+              }
+              Spacer()
+            }
+          }
+          .frame(width: geometry.size.width - PADDING_CUSTOM_TAB_BAR,
+                 height: HEIGHT_CUSTOM_TAB_BAR,
+                 alignment: .bottom)
+          .background(Color.bgGrayLight)
+          .cornerRadius(BORDER_RADIUS_CUSTOM_TAB_BAR)
+          .shadow(radius: SHADOW_RADIUS_CUSTOM_TAB_BAR, x: 0, y: 4)
+          Spacer()
+        }
+      }.padding(.bottom, PADDING_CUSTOM_TAB_BAR_BOTTOM)
     }
-    .frame(width: width)
-    .background(Color.bgGrayLight)
-    .cornerRadius(13)
-    .shadow(radius: 5, x: 0, y: 4)
   }
 }
 struct TabBottomView_Previews: PreviewProvider {
