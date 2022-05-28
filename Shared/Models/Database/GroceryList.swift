@@ -44,6 +44,32 @@ public struct GroceryList: Codable, Hashable {
   let sharedToUsers: [DocumentReference]
   var sharedToUsersObj: [User]? = []
   var sharedWithCurrentUser: Bool? = false
+    
+  enum CodingKeys: String, CodingKey {
+    case id
+    case name
+    case icon
+    case color
+    case creator
+    case creatorObj
+    case sharedToUsers
+    case sharedToUsersObj
+    case sharedWithCurrentUser
+  }
+  
+  public init(from decoder:Decoder) throws {
+    let values = try decoder.container(keyedBy: CodingKeys.self)
+    id = try values.decode(String.self, forKey: .id)
+    name = try values.decode(String.self, forKey: .name)
+    icon = try values.decode(String.self, forKey: .icon)
+    color = try values.decode(String.self, forKey: .color)
+    
+  }
+  
+  public func encode(to encoder: Encoder) throws {
+    var container = encoder.container(keyedBy: CodingKeys.self)
+    try container.encode(id, forKey: .id)
+  }
   
   /**
     Use to remove data that we only use for FE

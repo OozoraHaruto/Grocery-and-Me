@@ -22,6 +22,10 @@ func getListColor(color: String) -> Color {
   if color.starts(with: "#") {
     return Color(hex: color)
   } else {
+    #if os(macOS)
+    return Color(nsColor: .labelColor)
+    #else
     return Color(uiColor: .label)
+    #endif      
   }
 }

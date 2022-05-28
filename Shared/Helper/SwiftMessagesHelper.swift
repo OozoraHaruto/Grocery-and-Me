@@ -5,6 +5,7 @@
 //  Created by 春音 on 7/5/22.
 //
 
+#if !os(macOS)
 import SwiftUI
 import SwiftMessages
 
@@ -46,3 +47,4 @@ func getSwiftMessageBasicView(
   
   return view
 }
+#endif

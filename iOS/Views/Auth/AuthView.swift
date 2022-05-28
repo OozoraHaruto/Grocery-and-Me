@@ -9,7 +9,9 @@ import SwiftUI
 import Firebase
 import FirebaseFirestore
 import FirebaseFirestoreSwift
+#if !os(macOS)
 import SwiftMessages
+#endif
 
 struct AuthView: View {
   @ObservedObject var auth: Authentication
@@ -38,15 +40,27 @@ struct AuthView: View {
           
           // Input boxes
           if (!loggingIn) {
+            #if os(macOS)
+            TextField("NAME", text: $name)
+              .textFieldStyle(BottomLineTextFieldStyle())
+              .font(.body)
+            #else
             TextField("NAME", text: $name)
               .textFieldStyle(BottomLineTextFieldStyle())
               .font(.body)
               .keyboardType(.default)
+            #endif
           }
+          #if os(macOS)
+          TextField("EMAIL", text: $email)
+            .textFieldStyle(BottomLineTextFieldStyle())
+            .font(.body)
+          #else
           TextField("EMAIL", text: $email)
             .textFieldStyle(BottomLineTextFieldStyle())
             .font(.body)
             .keyboardType(.emailAddress)
+          #endif
           SecureField("PASSWORD", text: $password)
             .font(.body)
             .textFieldStyle(BottomLineTextFieldStyle())
@@ -64,13 +78,13 @@ struct AuthView: View {
               if (loggingIn) {
                 FontAwesomeSVG(svgName: "right-to-bracket",
                                frameHeight: ICON_HEIGHT_BUTTON,
-                               color: UIColor.white.cgColor,
+                               color: Color.white.cgColor,
                                actAsSolid: true)
                   .frame(width: ICON_HEIGHT_BUTTON, height: ICON_HEIGHT_BUTTON, alignment: .center)
               } else {
                 FontAwesomeSVG(svgName: "user-plus",
                                frameHeight: ICON_HEIGHT_BUTTON,
-                               color: UIColor.white.cgColor,
+                               color: Color.white.cgColor,
                                swapColor: true,
                                actAsSolid: true)
                   .frame(width: ICON_HEIGHT_BUTTON, height: ICON_HEIGHT_BUTTON, alignment: .center)
@@ -115,9 +129,13 @@ struct AuthView: View {
     auth.registering = true
     Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
       if error != nil {
+        #if !os(macOS)
         let errorView = getSwiftMessageBasicView(layout: .statusLine, theme: .error)
         errorView.bodyLabel?.text = error?.localizedDescription
         SwiftMessages.show(config: getSwiftMessageStatusLineConfig(), view: errorView)
+        #else
+        // TODO: show alert using local?
+        #endif
       } else if let user = authResult?.user {
         // User Object
         let newUser = User(id: user.uid, name: name, email: email.lowercased())
@@ -143,10 +161,14 @@ struct AuthView: View {
                   auth.signout()
                   
                   // prompt sign up success
+                  #if !os(macOS)
                   let successView = getSwiftMessageBasicView(layout: .centeredView, theme: .success)
                   successView.titleLabel?.text = "SIGNUP_SUCCESS_TITLE".localized
                   successView.bodyLabel?.text = "SIGNUP_SUCCESS_DESC".localized
                   SwiftMessages.show(config: getSwiftMessageStatusLineConfig(), view: successView)
+                  #else
+                  // TODO: show alert using local?
+                  #endif
                   
                   // Bring user to login page
                   self.loggingIn = true
@@ -182,9 +204,13 @@ struct AuthView: View {
     Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
       loading = false
       if error != nil {
+        #if !os(macOS)
         let errorView = getSwiftMessageBasicView(layout: .statusLine, theme: .error)
         errorView.bodyLabel?.text = error?.localizedDescription
         SwiftMessages.show(config: getSwiftMessageStatusLineConfig(), view: errorView)
+        #else
+        // TODO: show alert using local?
+        #endif
       } else {
         UserDefaults.standard.set(email, forKey: DEF_LOGIN_EMAIL)
       }

@@ -15,7 +15,7 @@ struct HomeView: View {
       if auth.uid == "" {
         AuthView(auth: auth)
       } else {
-        MainTabView(auth: auth)
+//        MainTabView(auth: auth)
       }
     }
   }

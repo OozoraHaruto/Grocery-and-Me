@@ -57,6 +57,8 @@ class Authentication: ObservableObject {
           if [self.name, self.photoURL].anyNil() {
             // Get from firestore
             let db = Firestore.firestore()
+            
+            #if !os(macOS)
             db.collection(COL_USERS).document(user.uid).getDocument(as: User.self) { result in
               switch result {
               case .success(let dbUser):
@@ -78,6 +80,38 @@ class Authentication: ObservableObject {
                 print("Error decoding user: \(error)")
               }
             }
+            #else
+            db.collection(COL_USERS).document(user.uid).getDocument(){ (document, err) in
+              if let err = err {
+                print("Error getting documents: \(err)")
+              } else if let document = document {
+                if let docData = document.data() {
+                  do {
+                    let json = try JSONSerialization.data(withJSONObject: docData)
+                    let decoder = JSONDecoder()
+                    decoder.keyDecodingStrategy = .convertFromSnakeCase
+                    let dbUser = try decoder.decode(User.self, from: json)
+                    
+                    self.name = dbUser.name
+                    self.photoURL = dbUser.profileImageLink
+                    
+                    // Save to auth
+                    let changeRequest = user.createProfileChangeRequest()
+                    changeRequest.displayName = dbUser.name
+                    changeRequest.photoURL = URL(string: dbUser.profileImageLink)
+                    changeRequest.commitChanges { err in
+                      if let err = err {
+                        print("Error updating user: \(err)")
+                        return
+                      }
+                    }
+                  } catch {
+                    print("Failed to parse data")
+                  }
+                }
+              }
+            }
+            #endif
           }else {
             self.name = user.displayName
             self.photoURL = user.photoURL?.absoluteString
