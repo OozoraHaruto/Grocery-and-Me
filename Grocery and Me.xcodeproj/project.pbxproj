@@ -1562,7 +1562,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = "Grocery and Me (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 220522;
+				CURRENT_PROJECT_VERSION = 221001.144803;
 				DEVELOPMENT_TEAM = 84BDDMKF3C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1576,7 +1576,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.taiyouapps.Grocery-and-Me";
 				PRODUCT_NAME = "Grocery and Me";
 				SDKROOT = iphoneos;
@@ -1596,7 +1596,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_ENTITLEMENTS = "Grocery and Me (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 220522;
+				CURRENT_PROJECT_VERSION = 221001.144803;
 				DEVELOPMENT_TEAM = 84BDDMKF3C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1610,7 +1610,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.taiyouapps.Grocery-and-Me";
 				PRODUCT_NAME = "Grocery and Me";
 				SDKROOT = iphoneos;
@@ -1630,7 +1630,7 @@
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 220522;
+				CURRENT_PROJECT_VERSION = 221001.144803;
 				DEVELOPMENT_TEAM = 84BDDMKF3C;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -1641,7 +1641,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.taiyouapps.Grocery-and-Me";
 				PRODUCT_NAME = "Grocery and Me";
 				SDKROOT = macosx;
@@ -1658,7 +1658,7 @@
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 220522;
+				CURRENT_PROJECT_VERSION = 221001.144803;
 				DEVELOPMENT_TEAM = 84BDDMKF3C;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -1669,7 +1669,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.taiyouapps.Grocery-and-Me";
 				PRODUCT_NAME = "Grocery and Me";
 				SDKROOT = macosx;
@@ -1762,7 +1762,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Edited List Notification/Edited List Notification.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 220522;
+				CURRENT_PROJECT_VERSION = 220528;
 				DEVELOPMENT_TEAM = 84BDDMKF3C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Edited List Notification/Info.plist";
@@ -1791,7 +1791,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "Edited List Notification/Edited List Notification.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 220522;
+				CURRENT_PROJECT_VERSION = 220528;
 				DEVELOPMENT_TEAM = 84BDDMKF3C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Edited List Notification/Info.plist";
