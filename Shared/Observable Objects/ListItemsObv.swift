@@ -298,9 +298,11 @@ class ListItemsObv: ObservableObject {
                      completion: @escaping ([ListItem]) -> Void) {
     if items!.count == 0 || keyword == "" { return completion([])}
     
+    let lowerKeyword = keyword.lowercased()
+    
     DispatchQueue.global(qos: .background).async {
       let items = self.items!.filter() {
-        $0.name.contains(keyword) && (!$0.shown || includeShownItems)
+        $0.name.lowercased().contains(lowerKeyword) && (!$0.shown || includeShownItems)
       }
       completion(items)
     }
