@@ -36,6 +36,7 @@
 "CREATED_BY %@" = "Created by %@";
 "LIST_ADD" = "Add list";
 "LIST_LEAVE" = "Leave List";
+"LIST_SHARED_WITH_WITH_COUNT %lld" = "Shared with %lld people";
 "LIST_SHARED_WITH_YOU_ONLY" = "Only shared with you";
 "LIST_SHARED_WITH_YOU_AND %lld" = "Shared with you and %lld others";
 "FORM_LIST_TITLE_NEW" = "Add list";

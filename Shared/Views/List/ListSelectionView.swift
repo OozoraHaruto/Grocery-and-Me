@@ -186,6 +186,9 @@ struct ListCellView: View {
         if listItem.sharedWithCurrentUser! && listItem.creatorObj != nil {
           Text("CREATED_BY \(listItem.creatorObj!.name)")
               .font(.caption)
+        } else if !listItem.sharedWithCurrentUser! && !listItem.sharedToUsers.isEmpty {
+          Text("LIST_SHARED_WITH_WITH_COUNT \(listItem.sharedToUsers.count)")
+              .font(.caption)
         }
       }
       Spacer()
