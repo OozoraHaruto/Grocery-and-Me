@@ -5,6 +5,7 @@
 //  Created by 春音 on 16/4/22.
 //
 
+import SwiftToast
 import SwiftUI
 
 @main
@@ -16,6 +17,8 @@ struct Grocery_and_MeApp: App {
     WindowGroup {
       HomeView(auth: auth)
       .navigationViewStyle(.stack)
+      .modifier(ToastModifier())
+      .environmentObject(AppDelegate.toastCoordinator)
     }
   }
 }

@@ -5,12 +5,14 @@
 //  Created by 春音 on 17/4/22.
 //
 
+import SwiftToast
 import SwiftUI
-import SwiftMessages
 import FirebaseAuth
 
 struct ProfileView: View {
   @ObservedObject var auth: Authentication
+  @EnvironmentObject var toastCoordinator: ToastCoordinator
+  
   @State var reAuth: Bool = false
   
   var body: some View {
@@ -77,9 +79,10 @@ struct ProfileView: View {
   private func logout() {
     auth.signout() { err in
       if let err = err {
-        let errorView = getSwiftMessageBasicView(layout: .statusLine, theme: .error)
-        errorView.bodyLabel?.text = err.localizedDescription
-        SwiftMessages.show(config: getSwiftMessageStatusLineConfig(), view: errorView)
+        let toast = Toast(type: .boot,
+                          theme: .error,
+                          title: err.localizedDescription)
+        toastCoordinator.showToast(toast)
       }
     }
   }

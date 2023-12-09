@@ -9,11 +9,12 @@ import SwiftUI
 import Firebase
 import FirebaseFirestore
 import FirebaseFirestoreSwift
-import SwiftMessages
+import SwiftToast
 
 struct AuthView: View {
   @ObservedObject var auth: Authentication
-  
+  @EnvironmentObject var toastCoordinator: ToastCoordinator
+
   @State var name: String = ""
   @State var email: String = (UserDefaults.standard.string(forKey: DEF_LOGIN_EMAIL) ?? "")
   @State var password: String = ""
@@ -114,10 +115,11 @@ struct AuthView: View {
     loading = true
     auth.registering = true
     Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-      if error != nil {
-        let errorView = getSwiftMessageBasicView(layout: .statusLine, theme: .error)
-        errorView.bodyLabel?.text = error?.localizedDescription
-        SwiftMessages.show(config: getSwiftMessageStatusLineConfig(), view: errorView)
+      if let err = error {
+        let toast = Toast(type: .boot,
+                          theme: .error,
+                          title: err.localizedDescription)
+        toastCoordinator.showToast(toast)
       } else if let user = authResult?.user {
         // User Object
         let newUser = User(id: user.uid, name: name, email: email.lowercased())
@@ -143,10 +145,11 @@ struct AuthView: View {
                   auth.signout()
                   
                   // prompt sign up success
-                  let successView = getSwiftMessageBasicView(layout: .centeredView, theme: .success)
-                  successView.titleLabel?.text = "SIGNUP_SUCCESS_TITLE".localized
-                  successView.bodyLabel?.text = "SIGNUP_SUCCESS_DESC".localized
-                  SwiftMessages.show(config: getSwiftMessageStatusLineConfig(), view: successView)
+                  let toast = Toast(type: .boot,
+                                    theme: .success,
+                                    title: "SIGNUP_SUCCESS_TITLE".localized,
+                                    message: "SIGNUP_SUCCESS_DESC".localized)
+                  toastCoordinator.showToast(toast)
                   
                   // Bring user to login page
                   self.loggingIn = true
@@ -181,10 +184,11 @@ struct AuthView: View {
     auth.registering = false
     Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
       loading = false
-      if error != nil {
-        let errorView = getSwiftMessageBasicView(layout: .statusLine, theme: .error)
-        errorView.bodyLabel?.text = error?.localizedDescription
-        SwiftMessages.show(config: getSwiftMessageStatusLineConfig(), view: errorView)
+      if let err = error {
+        let toast = Toast(type: .boot,
+                          theme: .error,
+                          title: err.localizedDescription)
+        toastCoordinator.showToast(toast)
       } else {
         UserDefaults.standard.set(email, forKey: DEF_LOGIN_EMAIL)
       }

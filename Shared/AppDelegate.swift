@@ -5,6 +5,7 @@
 //  Created by 春音 on 16/4/22.
 //
 
+import SwiftToast
 import SwiftUI
 import Firebase
 import FirebaseCore
@@ -13,6 +14,8 @@ import FirebaseMessaging
 import FirebaseAnalytics
 
 class AppDelegate: NSObject, UIApplicationDelegate {
+  static var toastCoordinator = ToastCoordinator()
+
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
     FirebaseApp.configure()
     Firestore.firestore()

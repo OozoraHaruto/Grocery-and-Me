@@ -59,10 +59,6 @@
 		641B51212826BB5000C94E73 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641B511F2826BB5000C94E73 /* JSON.swift */; };
 		641B51222826BB5000C94E73 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641B511F2826BB5000C94E73 /* JSON.swift */; };
 		641B51232826BB5000C94E73 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641B511F2826BB5000C94E73 /* JSON.swift */; };
-		641B51272826BBFE00C94E73 /* SwiftMessagesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641B51262826BBFE00C94E73 /* SwiftMessagesHelper.swift */; };
-		641B51282826BBFE00C94E73 /* SwiftMessagesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641B51262826BBFE00C94E73 /* SwiftMessagesHelper.swift */; };
-		641B51292826BBFE00C94E73 /* SwiftMessagesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641B51262826BBFE00C94E73 /* SwiftMessagesHelper.swift */; };
-		641B512A2826BBFE00C94E73 /* SwiftMessagesHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641B51262826BBFE00C94E73 /* SwiftMessagesHelper.swift */; };
 		641B512C2826BCD900C94E73 /* GroceryListHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641B512B2826BCD900C94E73 /* GroceryListHelper.swift */; };
 		641B512D2826BCD900C94E73 /* GroceryListHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641B512B2826BCD900C94E73 /* GroceryListHelper.swift */; };
 		641B512E2826BCD900C94E73 /* GroceryListHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641B512B2826BCD900C94E73 /* GroceryListHelper.swift */; };
@@ -212,7 +208,8 @@
 		64770FE2280ABD5400DD1975 /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64770FE0280ABD5400DD1975 /* constants.swift */; };
 		64770FE3280ABD5400DD1975 /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64770FE0280ABD5400DD1975 /* constants.swift */; };
 		64770FE4280ABD5400DD1975 /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64770FE0280ABD5400DD1975 /* constants.swift */; };
-		64770FF1280AE85300DD1975 /* SwiftMessages in Frameworks */ = {isa = PBXBuildFile; productRef = 64770FF0280AE85300DD1975 /* SwiftMessages */; };
+		6481B7C32B247C1F003DCEF7 /* SwiftToast in Frameworks */ = {isa = PBXBuildFile; productRef = 6481B7C22B247C1F003DCEF7 /* SwiftToast */; };
+		6481B7C52B247C50003DCEF7 /* SwiftToast in Frameworks */ = {isa = PBXBuildFile; productRef = 6481B7C42B247C50003DCEF7 /* SwiftToast */; };
 		6494A64E282625A200118D2A /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6494A64D282625A200118D2A /* String+Extensions.swift */; };
 		6494A64F282625A200118D2A /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6494A64D282625A200118D2A /* String+Extensions.swift */; };
 		6494A650282625A200118D2A /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6494A64D282625A200118D2A /* String+Extensions.swift */; };
@@ -384,7 +381,6 @@
 		641B51152826BAB300C94E73 /* ItemCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCategory.swift; sourceTree = "<group>"; };
 		641B511A2826BAF200C94E73 /* ItemGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemGroup.swift; sourceTree = "<group>"; };
 		641B511F2826BB5000C94E73 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
-		641B51262826BBFE00C94E73 /* SwiftMessagesHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftMessagesHelper.swift; sourceTree = "<group>"; };
 		641B512B2826BCD900C94E73 /* GroceryListHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryListHelper.swift; sourceTree = "<group>"; };
 		641B51302826BD3300C94E73 /* UserHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHelper.swift; sourceTree = "<group>"; };
 		643CD3D4281F816300A06F15 /* ListItemsObv.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemsObv.swift; sourceTree = "<group>"; };
@@ -479,10 +475,10 @@
 				64E0B8A32B244A2E003D6430 /* FirebaseAnalyticsSwift in Frameworks */,
 				64E0B89F2B244A2E003D6430 /* FirebaseAnalytics in Frameworks */,
 				64E0B8AF2B244AB6003D6430 /* FirebaseAuth in Frameworks */,
-				64770FF1280AE85300DD1975 /* SwiftMessages in Frameworks */,
 				64E0B8B12B244AC5003D6430 /* FirebaseFunctions in Frameworks */,
 				64E0B8A72B244A2E003D6430 /* FirebaseAppCheck in Frameworks */,
 				64E0B8AD2B244AA6003D6430 /* FirebaseMessaging in Frameworks */,
+				6481B7C52B247C50003DCEF7 /* SwiftToast in Frameworks */,
 				64E0B8A52B244A2E003D6430 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -493,6 +489,7 @@
 			files = (
 				64E0B8CF2B244D17003D6430 /* PocketSVG in Frameworks */,
 				64E0B8B92B244CAC003D6430 /* FirebaseAnalyticsSwift in Frameworks */,
+				6481B7C32B247C1F003DCEF7 /* SwiftToast in Frameworks */,
 				64E0B8CD2B244D13003D6430 /* Introspect in Frameworks */,
 				64E0B8BF2B244CC0003D6430 /* FirebaseAuth in Frameworks */,
 				64E0B8C72B244CDE003D6430 /* FirebaseMessaging in Frameworks */,
@@ -643,7 +640,6 @@
 			children = (
 				641B512B2826BCD900C94E73 /* GroceryListHelper.swift */,
 				64F42D71282156A00077FABC /* NotificationHelper.swift */,
-				641B51262826BBFE00C94E73 /* SwiftMessagesHelper.swift */,
 				641B51302826BD3300C94E73 /* UserHelper.swift */,
 			);
 			path = Helper;
@@ -829,7 +825,6 @@
 			);
 			name = "Grocery and Me (iOS)";
 			packageProductDependencies = (
-				64770FF0280AE85300DD1975 /* SwiftMessages */,
 				6497EE1C280C09E900134694 /* PocketSVG */,
 				643CD3DA281F94AF00A06F15 /* Introspect */,
 				6494A6A528266E9500118D2A /* ImageViewerRemote */,
@@ -843,6 +838,7 @@
 				64E0B8AE2B244AB6003D6430 /* FirebaseAuth */,
 				64E0B8B02B244AC5003D6430 /* FirebaseFunctions */,
 				64E0B8B22B244AEC003D6430 /* FirebaseFirestoreSwift */,
+				6481B7C42B247C50003DCEF7 /* SwiftToast */,
 			);
 			productName = "Grocery and Me (iOS)";
 			productReference = 64770F62280AA52500DD1975 /* Grocery and Me.app */;
@@ -874,6 +870,7 @@
 				64E0B8C62B244CDE003D6430 /* FirebaseMessaging */,
 				64E0B8CC2B244D13003D6430 /* Introspect */,
 				64E0B8CE2B244D17003D6430 /* PocketSVG */,
+				6481B7C22B247C1F003DCEF7 /* SwiftToast */,
 			);
 			productName = "Grocery and Me (macOS)";
 			productReference = 64770F68280AA52500DD1975 /* Grocery and Me.app */;
@@ -975,11 +972,11 @@
 			);
 			mainGroup = 64770F55280AA52300DD1975;
 			packageReferences = (
-				64770FEF280AE85300DD1975 /* XCRemoteSwiftPackageReference "SwiftMessages" */,
 				6497EE1B280C09E900134694 /* XCRemoteSwiftPackageReference "PocketSVG" */,
 				643CD3D9281F94AF00A06F15 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 				6494A6A428266E9400118D2A /* XCRemoteSwiftPackageReference "swiftui-image-viewer" */,
 				64E0B89D2B244A2E003D6430 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				6481B7C12B247BE9003DCEF7 /* XCRemoteSwiftPackageReference "SwiftToast" */,
 			);
 			productRefGroup = 64770F63280AA52500DD1975 /* Products */;
 			projectDirPath = "";
@@ -1171,7 +1168,6 @@
 				64596E55281401C300CFAE87 /* ProgressFullPageView.swift in Sources */,
 				6494A653282625D800118D2A /* Date+Extensions.swift in Sources */,
 				641B511B2826BAF200C94E73 /* ItemGroup.swift in Sources */,
-				641B51272826BBFE00C94E73 /* SwiftMessagesHelper.swift in Sources */,
 				6497EE25280C3BEE00134694 /* TabItemView.swift in Sources */,
 				64770FAF280AADF100DD1975 /* AppDelegate.swift in Sources */,
 				6497EE35280C40E600134694 /* MainTabView.swift in Sources */,
@@ -1220,7 +1216,6 @@
 				64596E56281401C300CFAE87 /* ProgressFullPageView.swift in Sources */,
 				6494A654282625D800118D2A /* Date+Extensions.swift in Sources */,
 				641B511C2826BAF200C94E73 /* ItemGroup.swift in Sources */,
-				641B51282826BBFE00C94E73 /* SwiftMessagesHelper.swift in Sources */,
 				6497EE26280C3BEE00134694 /* TabItemView.swift in Sources */,
 				64770FB0280AADF100DD1975 /* AppDelegate.swift in Sources */,
 				6497EE36280C40E600134694 /* MainTabView.swift in Sources */,
@@ -1270,7 +1265,6 @@
 				6494A65A282625F700118D2A /* Color+Extensions.swift in Sources */,
 				641B51132826BA8D00C94E73 /* TabItemData.swift in Sources */,
 				641B50F72826B77000C94E73 /* FontAwesomeSVG.swift in Sources */,
-				641B51292826BBFE00C94E73 /* SwiftMessagesHelper.swift in Sources */,
 				6415EB37281EB48F00771DA8 /* ListDataWrapperView.swift in Sources */,
 				641B51182826BAB300C94E73 /* ItemCategory.swift in Sources */,
 				6494A65F2826262600118D2A /* Collection+Extensions.swift in Sources */,
@@ -1320,7 +1314,6 @@
 				6494A65B282625F700118D2A /* Color+Extensions.swift in Sources */,
 				641B51142826BA8D00C94E73 /* TabItemData.swift in Sources */,
 				641B50F82826B77000C94E73 /* FontAwesomeSVG.swift in Sources */,
-				641B512A2826BBFE00C94E73 /* SwiftMessagesHelper.swift in Sources */,
 				6415EB38281EB48F00771DA8 /* ListDataWrapperView.swift in Sources */,
 				641B51192826BAB300C94E73 /* ItemCategory.swift in Sources */,
 				6494A6602826262600118D2A /* Collection+Extensions.swift in Sources */,
@@ -1857,12 +1850,12 @@
 				minimumVersion = 0.1.4;
 			};
 		};
-		64770FEF280AE85300DD1975 /* XCRemoteSwiftPackageReference "SwiftMessages" */ = {
+		6481B7C12B247BE9003DCEF7 /* XCRemoteSwiftPackageReference "SwiftToast" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SwiftKickMobile/SwiftMessages";
+			repositoryURL = "https://github.com/OozoraHaruto/SwiftToast";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.0;
+				branch = main;
+				kind = branch;
 			};
 		};
 		6494A6A428266E9400118D2A /* XCRemoteSwiftPackageReference "swiftui-image-viewer" */ = {
@@ -1897,10 +1890,15 @@
 			package = 643CD3D9281F94AF00A06F15 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
 			productName = Introspect;
 		};
-		64770FF0280AE85300DD1975 /* SwiftMessages */ = {
+		6481B7C22B247C1F003DCEF7 /* SwiftToast */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 64770FEF280AE85300DD1975 /* XCRemoteSwiftPackageReference "SwiftMessages" */;
-			productName = SwiftMessages;
+			package = 6481B7C12B247BE9003DCEF7 /* XCRemoteSwiftPackageReference "SwiftToast" */;
+			productName = SwiftToast;
+		};
+		6481B7C42B247C50003DCEF7 /* SwiftToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6481B7C12B247BE9003DCEF7 /* XCRemoteSwiftPackageReference "SwiftToast" */;
+			productName = SwiftToast;
 		};
 		6494A6A528266E9500118D2A /* ImageViewerRemote */ = {
 			isa = XCSwiftPackageProductDependency;
