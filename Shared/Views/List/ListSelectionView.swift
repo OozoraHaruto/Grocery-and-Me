@@ -75,20 +75,20 @@ struct ListSelectionView: View {
                      listsObserver: listsObserver,
                      viewingItem: editingList!)
       }
-      .listStyle(GroupedListStyle())
-      .navigationBarTitle("LISTS")
+#if os(iOS)
+      .listStyle(.grouped)
+#endif
+      .navigationTitle("LISTS")
       .toolbar() {
-        ToolbarItem(placement: .navigationBarTrailing) {
-          if ((listsObserver.createdLists ?? []).count > 0 ||
-              (listsObserver.sharedLists ?? []).count > 0) {
-            Button{
-              presentedCreateView = !presentedCreateView
-            } label: {
-              Image(systemName: "plus")
-            }.foregroundColor(.blue)
-          } else {
-            EmptyView()
-          }
+        if ((listsObserver.createdLists ?? []).count > 0 ||
+            (listsObserver.sharedLists ?? []).count > 0) {
+          Button{
+            presentedCreateView = !presentedCreateView
+          } label: {
+            Image(systemName: "plus")
+          }.foregroundColor(.blue)
+        } else {
+          EmptyView()
         }
       }
       .onChange(of: auth.uid) {newValue in
@@ -148,7 +148,7 @@ struct ListCellView: View {
           } else if phase.error != nil {
             FontAwesomeSVG(svgName: "binary-slash",
                            frameHeight: ICON_HEIGHT_LIST_CELL,
-                           color: UIColor.red.cgColor,
+                           color: Color.red.getCGColor(),
                            actAsSolid: false)
           }else {
             ProgressView()
@@ -166,7 +166,7 @@ struct ListCellView: View {
           } else if phase.error != nil {
             FontAwesomeSVG(svgName: "binary-slash",
                            frameHeight: ICON_HEIGHT_LIST_CELL,
-                           color: UIColor.red.cgColor,
+                           color: Color.red.getCGColor(),
                            actAsSolid: false)
           }else {
             ProgressView()
@@ -197,7 +197,7 @@ struct ListCellView: View {
         editingList = listItem
       } label: {
         Image(systemName: "info.circle")
-          .foregroundColor(Color(UIColor.systemBlue))
+          .foregroundColor(.bootBlue)
       }.buttonStyle(.plain)
     }.contentShape(Rectangle())
   }

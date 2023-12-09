@@ -107,7 +107,7 @@ extension Color {
         b = CGFloat((hexNumber & 0x0000ff00) >> 8) / 255
         a = hexColor.count == 8 ? CGFloat(hexNumber & 0x000000ff) / 255 : 1
         
-        self.init(UIColor.init(red: r, green: g, blue: b, alpha: a))
+        self.init(.init(red: r, green: g, blue: b, alpha: a))
         return
       }
     }
@@ -117,6 +117,10 @@ extension Color {
   }
   
   func getCGColor() -> CGColor {
+#if canImport(UIKit)
     return UIColor(self).cgColor
+#else
+    return NSColor(self).cgColor
+#endif
   }
 }

@@ -27,7 +27,7 @@ struct ProfileView: View {
         } else if phase.error != nil {
           FontAwesomeSVG(svgName: "binary-slash",
                          frameHeight: ICON_HEIGHT_PROFILE,
-                         color: UIColor.red.cgColor,
+                         color: Color.red.getCGColor(),
                          actAsSolid: false)
         } else {
           ProgressView()
@@ -60,8 +60,10 @@ struct ProfileView: View {
           }
         }
       }
-      .listStyle(GroupedListStyle())
-      
+#if os(iOS)
+      .listStyle(.grouped)
+#endif
+
     }.sheet(isPresented: $reAuth) {
       AuthView(auth: auth,
                name: "",

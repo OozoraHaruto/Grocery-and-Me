@@ -54,7 +54,9 @@ struct ListForm: View {
         Section() {
           HStack{
             TextField("FORM_LIST_SHARE_EMAIL", text: $sharedToUsersEmail)
+#if os(iOS)
               .keyboardType(.emailAddress)
+#endif
             Button{
               if sharedToUsersEmail != "" {
                 sharedToUsers.append(sharedToUsersEmail)
@@ -115,27 +117,30 @@ struct ListForm: View {
               .foregroundColor(.red)
           }
         }
-      }.listStyle(GroupedListStyle())
-        .navigationTitle((editingItem == nil) ? "FORM_LIST_TITLE_NEW" : "FORM_LIST_TITLE_EDIT \(editingItem!.name)")
-        .navigationViewStyle(DefaultNavigationViewStyle())
-        .onAppear() {
-          if let editingItem = editingItem {
-            loading = true
-            listsObserver.getListOfUsers(editingItem.sharedToUsers) { sharedUsers in
-              self.editingItem?.sharedToUsersObj = sharedUsers
-              
-              name = editingItem.name
-              icon = editingItem.icon
-              color = editingItem.color
-              colorSelect = colors.last!
-              
-              for user in sharedUsers {
-                sharedToUsers.append(user.email)
-              }
-              loading = false
+      }
+#if os(iOS)
+      .listStyle(.grouped)
+#endif
+      .navigationTitle((editingItem == nil) ? "FORM_LIST_TITLE_NEW" : "FORM_LIST_TITLE_EDIT \(editingItem!.name)")
+      .navigationViewStyle(DefaultNavigationViewStyle())
+      .onAppear() {
+        if let editingItem = editingItem {
+          loading = true
+          listsObserver.getListOfUsers(editingItem.sharedToUsers) { sharedUsers in
+            self.editingItem?.sharedToUsersObj = sharedUsers
+
+            name = editingItem.name
+            icon = editingItem.icon
+            color = editingItem.color
+            colorSelect = colors.last!
+
+            for user in sharedUsers {
+              sharedToUsers.append(user.email)
             }
+            loading = false
           }
         }
+      }
       
       if loading {
         ProgressFullPageView()

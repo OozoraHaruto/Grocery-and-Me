@@ -317,6 +317,14 @@
 		64E0B8C72B244CDE003D6430 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 64E0B8C62B244CDE003D6430 /* FirebaseMessaging */; };
 		64E0B8CD2B244D13003D6430 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 64E0B8CC2B244D13003D6430 /* Introspect */; };
 		64E0B8CF2B244D17003D6430 /* PocketSVG in Frameworks */ = {isa = PBXBuildFile; productRef = 64E0B8CE2B244D17003D6430 /* PocketSVG */; };
+		64E66C452B248CF000A8B49F /* Color+Extensions(No noti).swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E66C442B248CF000A8B49F /* Color+Extensions(No noti).swift */; };
+		64E66C462B248CF000A8B49F /* Color+Extensions(No noti).swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E66C442B248CF000A8B49F /* Color+Extensions(No noti).swift */; };
+		64E66C472B248CF000A8B49F /* Color+Extensions(No noti).swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E66C442B248CF000A8B49F /* Color+Extensions(No noti).swift */; };
+		64E66C482B248CF000A8B49F /* Color+Extensions(No noti).swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E66C442B248CF000A8B49F /* Color+Extensions(No noti).swift */; };
+		64E66C4F2B2492D100A8B49F /* UIAndNSHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E66C4E2B2492D100A8B49F /* UIAndNSHelper.swift */; };
+		64E66C502B2492D100A8B49F /* UIAndNSHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E66C4E2B2492D100A8B49F /* UIAndNSHelper.swift */; };
+		64E66C512B2492D100A8B49F /* UIAndNSHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E66C4E2B2492D100A8B49F /* UIAndNSHelper.swift */; };
+		64E66C522B2492D100A8B49F /* UIAndNSHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E66C4E2B2492D100A8B49F /* UIAndNSHelper.swift */; };
 		64F42D1C2820DB680077FABC /* ListItemForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F42D1B2820DB680077FABC /* ListItemForm.swift */; };
 		64F42D1D2820DB680077FABC /* ListItemForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F42D1B2820DB680077FABC /* ListItemForm.swift */; };
 		64F42D1E2820DB680077FABC /* ListItemForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F42D1B2820DB680077FABC /* ListItemForm.swift */; };
@@ -452,6 +460,8 @@
 		64CE5BDF282268E6008D4EC1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		64CE5BE128226B62008D4EC1 /* Encodable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Extensions.swift"; sourceTree = "<group>"; };
 		64CE5BE728226B77008D4EC1 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		64E66C442B248CF000A8B49F /* Color+Extensions(No noti).swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Extensions(No noti).swift"; sourceTree = "<group>"; };
+		64E66C4E2B2492D100A8B49F /* UIAndNSHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAndNSHelper.swift; sourceTree = "<group>"; };
 		64F42D1B2820DB680077FABC /* ListItemForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemForm.swift; sourceTree = "<group>"; };
 		64F42D20282146700077FABC /* Grocery-and-Me--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Grocery-and-Me--iOS--Info.plist"; sourceTree = "<group>"; };
 		64F42D4A28214B6F0077FABC /* Grocery and Me (iOS).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Grocery and Me (iOS).entitlements"; sourceTree = "<group>"; };
@@ -638,6 +648,7 @@
 		641B51252826BBD600C94E73 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				64E66C4E2B2492D100A8B49F /* UIAndNSHelper.swift */,
 				641B512B2826BCD900C94E73 /* GroceryListHelper.swift */,
 				64F42D71282156A00077FABC /* NotificationHelper.swift */,
 				641B51302826BD3300C94E73 /* UserHelper.swift */,
@@ -780,6 +791,7 @@
 			children = (
 				6494A65C2826262600118D2A /* Collection+Extensions.swift */,
 				6494A657282625F700118D2A /* Color+Extensions.swift */,
+				64E66C442B248CF000A8B49F /* Color+Extensions(No noti).swift */,
 				6494A652282625D800118D2A /* Date+Extensions.swift */,
 				64CE5BE128226B62008D4EC1 /* Encodable+Extensions.swift */,
 				6494A64D282625A200118D2A /* String+Extensions.swift */,
@@ -1163,6 +1175,7 @@
 				6497EE17280C01DA00134694 /* ListSelectionView.swift in Sources */,
 				641B51162826BAB300C94E73 /* ItemCategory.swift in Sources */,
 				6443FC8E2814E94E00641398 /* ListsObv.swift in Sources */,
+				64E66C452B248CF000A8B49F /* Color+Extensions(No noti).swift in Sources */,
 				6497EE30280C3FA900134694 /* CustomTabView.swift in Sources */,
 				6415EB35281EB48F00771DA8 /* ListDataWrapperView.swift in Sources */,
 				64596E55281401C300CFAE87 /* ProgressFullPageView.swift in Sources */,
@@ -1196,6 +1209,7 @@
 				6494A658282625F700118D2A /* Color+Extensions.swift in Sources */,
 				6497EE3F280C4C4C00134694 /* ProfileView.swift in Sources */,
 				6415EB2B281E701D00771DA8 /* ListInfoView.swift in Sources */,
+				64E66C4F2B2492D100A8B49F /* UIAndNSHelper.swift in Sources */,
 				6494A65D2826262600118D2A /* Collection+Extensions.swift in Sources */,
 				641B51012826B87900C94E73 /* User.swift in Sources */,
 			);
@@ -1211,6 +1225,7 @@
 				6497EE18280C01DA00134694 /* ListSelectionView.swift in Sources */,
 				641B51172826BAB300C94E73 /* ItemCategory.swift in Sources */,
 				6443FC8F2814E94E00641398 /* ListsObv.swift in Sources */,
+				64E66C462B248CF000A8B49F /* Color+Extensions(No noti).swift in Sources */,
 				6497EE31280C3FA900134694 /* CustomTabView.swift in Sources */,
 				6415EB36281EB48F00771DA8 /* ListDataWrapperView.swift in Sources */,
 				64596E56281401C300CFAE87 /* ProgressFullPageView.swift in Sources */,
@@ -1244,6 +1259,7 @@
 				6494A659282625F700118D2A /* Color+Extensions.swift in Sources */,
 				6497EE40280C4C4C00134694 /* ProfileView.swift in Sources */,
 				6415EB2C281E701D00771DA8 /* ListInfoView.swift in Sources */,
+				64E66C502B2492D100A8B49F /* UIAndNSHelper.swift in Sources */,
 				6494A65E2826262600118D2A /* Collection+Extensions.swift in Sources */,
 				641B51022826B87900C94E73 /* User.swift in Sources */,
 			);
@@ -1281,7 +1297,9 @@
 				64770FBC280AB3C400DD1975 /* HomeView.swift in Sources */,
 				6415EB2D281E701D00771DA8 /* ListInfoView.swift in Sources */,
 				6497EE19280C01DA00134694 /* ListSelectionView.swift in Sources */,
+				64E66C512B2492D100A8B49F /* UIAndNSHelper.swift in Sources */,
 				64F42D74282156A00077FABC /* NotificationHelper.swift in Sources */,
+				64E66C472B248CF000A8B49F /* Color+Extensions(No noti).swift in Sources */,
 				643CD3D7281F816300A06F15 /* ListItemsObv.swift in Sources */,
 				641B51032826B87900C94E73 /* User.swift in Sources */,
 				6497EE37280C40E600134694 /* MainTabView.swift in Sources */,
@@ -1330,7 +1348,9 @@
 				64770FBD280AB3C400DD1975 /* HomeView.swift in Sources */,
 				6415EB2E281E701D00771DA8 /* ListInfoView.swift in Sources */,
 				6497EE1A280C01DA00134694 /* ListSelectionView.swift in Sources */,
+				64E66C522B2492D100A8B49F /* UIAndNSHelper.swift in Sources */,
 				64F42D75282156A00077FABC /* NotificationHelper.swift in Sources */,
+				64E66C482B248CF000A8B49F /* Color+Extensions(No noti).swift in Sources */,
 				643CD3D8281F816300A06F15 /* ListItemsObv.swift in Sources */,
 				641B51042826B87900C94E73 /* User.swift in Sources */,
 				6497EE38280C40E600134694 /* MainTabView.swift in Sources */,
@@ -1537,7 +1557,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1546,7 +1566,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.taiyouapps.Grocery-and-Me";
 				PRODUCT_NAME = "Grocery and Me";
 				SDKROOT = iphoneos;
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1571,7 +1593,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1580,7 +1602,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.taiyouapps.Grocery-and-Me";
 				PRODUCT_NAME = "Grocery and Me";
 				SDKROOT = iphoneos;
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1606,7 +1630,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.taiyouapps.Grocery-and-Me";
 				PRODUCT_NAME = "Grocery and Me";
@@ -1634,7 +1658,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.taiyouapps.Grocery-and-Me";
 				PRODUCT_NAME = "Grocery and Me";

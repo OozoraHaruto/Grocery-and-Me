@@ -42,12 +42,16 @@ struct AuthView: View {
             TextField("NAME", text: $name)
               .textFieldStyle(BottomLineTextFieldStyle())
               .font(.body)
+#if os(iOS)
               .keyboardType(.default)
+#endif
           }
           TextField("EMAIL", text: $email)
             .textFieldStyle(BottomLineTextFieldStyle())
             .font(.body)
+#if os(iOS)
             .keyboardType(.emailAddress)
+#endif
           SecureField("PASSWORD", text: $password)
             .font(.body)
             .textFieldStyle(BottomLineTextFieldStyle())
@@ -65,13 +69,13 @@ struct AuthView: View {
               if (loggingIn) {
                 FontAwesomeSVG(svgName: "right-to-bracket",
                                frameHeight: ICON_HEIGHT_BUTTON,
-                               color: UIColor.white.cgColor,
+                               color: Color.white.getCGColor(),
                                actAsSolid: true)
                   .frame(width: ICON_HEIGHT_BUTTON, height: ICON_HEIGHT_BUTTON, alignment: .center)
               } else {
                 FontAwesomeSVG(svgName: "user-plus",
                                frameHeight: ICON_HEIGHT_BUTTON,
-                               color: UIColor.white.cgColor,
+                               color: Color.white.getCGColor(),
                                swapColor: true,
                                actAsSolid: true)
                   .frame(width: ICON_HEIGHT_BUTTON, height: ICON_HEIGHT_BUTTON, alignment: .center)

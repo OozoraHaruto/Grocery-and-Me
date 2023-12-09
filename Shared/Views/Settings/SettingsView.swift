@@ -56,7 +56,10 @@ struct SettingsView: View {
             (Bundle.main.infoDictionary?["CFBundleVersion"] as? String)!))){
             EmptyView()
           }
-        }.listStyle(.grouped)
+        }
+#if os(iOS)
+        .listStyle(.grouped)
+#endif
       }.navigationTitle("TAB_SETTINGS")
     }
   }
@@ -81,7 +84,7 @@ struct SettingsExternalProjectView: View {
     }.contentShape(Rectangle())
       .onTapGesture(){
         if let url = URL(string: project.link) {
-            UIApplication.shared.open(url)
+            openURL(url)
         }
       }
   }

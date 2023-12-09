@@ -27,8 +27,10 @@ struct ListItemForm: View {
         TextField("FORM_LIST_ITEM_NAME", text: $name)
         
         TextField("FORM_LIST_ITEM_AMOUNT", text: $amount)
+#if os(iOS)
           .keyboardType(.numberPad)
-        
+#endif
+
         TextField("FORM_LIST_ITEM_AMOUNT_TYPE", text: $amountType)
         
         TextField("FORM_LIST_ITEM_PICTURE", text: $picture)
@@ -81,8 +83,11 @@ struct ListItemForm: View {
               .foregroundColor(.red)
           }
         }
-      }.listStyle(.grouped)
-        .navigationViewStyle(DefaultNavigationViewStyle())
+      }
+#if os(iOS)
+      .listStyle(.grouped)
+#endif
+      .navigationViewStyle(DefaultNavigationViewStyle())
       
       if loading {
         ProgressFullPageView()

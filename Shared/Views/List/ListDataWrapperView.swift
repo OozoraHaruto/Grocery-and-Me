@@ -7,7 +7,9 @@
 
 import SwiftUI
 import FirebaseFirestore
+#if canImport(ImageViewerRemote)
 import ImageViewerRemote
+#endif
 import Introspect
 
 struct ListDataWrapperView: View {
@@ -27,7 +29,7 @@ struct ListDataWrapperView: View {
   // for overlay image view
   @State var imageViewerLink: String = ""
   @State var showImageViewer: Bool = false
-  
+
   var body: some View {
     VStack(alignment: .center, spacing: 0) {
       HStack(alignment: .center, spacing: PADDING_STACK) {
@@ -149,8 +151,7 @@ struct ListDataWrapperView: View {
                                                  picture: editingItem?.picture ?? "",
                                                  category: editingItem?.category ?? "",
                                                  note: editingItem?.note ?? "",
-                                                 themeColor: themeColor),
-                       isActive: $pushedView) {
+                                                 themeColor: themeColor)) {
           EmptyView()
         }.hidden()
       }
@@ -169,11 +170,17 @@ struct ListDataWrapperView: View {
           editing = true
         }
       }
-    }.overlay(ImageViewerRemote(imageURL: $imageViewerLink, viewerShown: $showImageViewer))
-      .navigationBarTitle(listInfo?.name ?? "", displayMode: .inline)
-      .introspectNavigationController() {nav in
-        nav.navigationBar.tintColor = UIColor(themeColor)
-      }
+    }
+    .navigationTitle(listInfo?.name ?? "")
+#if os(iOS)
+    .navigationBarTitleDisplayMode(.inline)
+    .introspectNavigationController() {nav in
+      nav.navigationBar.tintColor = UIColor(themeColor)
+    }
+#endif
+#if canImport(ImageViewerRemote)
+    .overlay(ImageViewerRemote(imageURL: $imageViewerLink, viewerShown: $showImageViewer))
+#endif
   }
   
   private func addItem() {
@@ -209,7 +216,7 @@ struct ListDataItemCellView: View {
             } else if phase.error != nil {
               FontAwesomeSVG(svgName: "binary-slash",
                              frameHeight: ICON_HEIGHT_LIST_CELL,
-                             color: UIColor.red.cgColor,
+                             color: Color.red.getCGColor(),
                              actAsSolid: false)
             }else {
               ProgressView()
@@ -225,7 +232,7 @@ struct ListDataItemCellView: View {
           
           Text("(\(item.getAmountLabel()))")
             .font(.caption)
-            .foregroundColor(Color(UIColor.secondaryLabel))
+            .foregroundColor(Color.secondary)
         }
         
         if item.note != "" {

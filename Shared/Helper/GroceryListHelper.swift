@@ -20,8 +20,8 @@ func getListFormColor(selectColor: String, typedColor: String) -> String {
 
 func getListColor(color: String) -> Color {
   if color.starts(with: "#") {
-    return Color(hex: color)
+    return .init(hex: color)
   } else {
-    return Color(uiColor: .label)
+    return .label
   }
 }

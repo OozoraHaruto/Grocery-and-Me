@@ -28,7 +28,7 @@ struct ListInfoView: View {
             } else if phase.error != nil {
               FontAwesomeSVG(svgName: "binary-slash",
                              frameHeight: ICON_HEIGHT_LIST_INFO,
-                             color: UIColor.red.cgColor,
+                             color: Color.red.getCGColor(),
                              actAsSolid: false)
             } else {
               ProgressView()
@@ -46,7 +46,7 @@ struct ListInfoView: View {
             } else if phase.error != nil {
               FontAwesomeSVG(svgName: "binary-slash",
                              frameHeight: ICON_HEIGHT_LIST_INFO,
-                             color: UIColor.red.cgColor,
+                             color: Color.red.getCGColor(),
                              actAsSolid: false)
             } else {
               ProgressView()
@@ -85,15 +85,15 @@ struct ListInfoView: View {
         
         Spacer()
       }
+#if os(iOS)
       .navigationBarTitleDisplayMode(.inline)
+#endif
       .toolbar() {
-        ToolbarItem(placement: .navigationBarTrailing) {
-          Button {
-            presented = false
-          } label: {
-            Text("UI_DONE").fontWeight(.heavy)
-          }.foregroundColor(.blue)
-        }
+        Button {
+          presented = false
+        } label: {
+          Text("UI_DONE").fontWeight(.heavy)
+        }.foregroundColor(.blue)
       }
     }
   }

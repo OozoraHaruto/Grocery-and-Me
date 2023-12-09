@@ -7,30 +7,86 @@
 
 import SwiftToast
 import SwiftUI
-import Firebase
-import FirebaseCore
-import FirebaseFirestore
 import FirebaseMessaging
 import FirebaseAnalytics
 
+#if os(iOS)
 class AppDelegate: NSObject, UIApplicationDelegate {
   static var toastCoordinator = ToastCoordinator()
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-    FirebaseApp.configure()
-    Firestore.firestore()
-    FirebaseConfiguration.shared.setLoggerLevel(.min)
+    initNotification()
+    initData()
     
-    // Notification
+    return true
+  }
+
+  func application(_ application: UIApplication,
+                   didReceiveRemoteNotification userInfo: [AnyHashable: Any],
+                   fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult)
+                     -> Void) {
+    print(userInfo)
+    Messaging.messaging().appDidReceiveMessage(userInfo)
+
+    completionHandler(.noData)
+  }
+
+  func application(_ application: UIApplication,
+                   didFailToRegisterForRemoteNotificationsWithError error: Error) {
+    print("Unable to register for remote notifications: \(error.localizedDescription)")
+  }
+
+  func application(_ application: UIApplication,
+                   didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+    Messaging.messaging().apnsToken = deviceToken
+  }
+}
+#elseif os(macOS)
+class AppDelegate: NSObject, NSApplicationDelegate {
+  static var toastCoordinator = ToastCoordinator()
+
+  func applicationDidFinishLaunching(_ notification: Notification) {
+    initNotification()
+    initData()
+  }
+
+  func application(_ application: NSApplication, 
+                   didReceiveRemoteNotification userInfo: [String : Any]) {
+    print(userInfo)
+    Messaging.messaging().appDidReceiveMessage(userInfo)
+  }
+
+  func application(_ application: NSApplication, 
+                   didFailToRegisterForRemoteNotificationsWithError error: Error) {
+    print("Unable to register for remote notifications: \(error.localizedDescription)")
+  }
+
+  func application(_ application: NSApplication,
+                   didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+    Messaging.messaging().apnsToken = deviceToken
+  }
+
+}
+#endif
+
+extension AppDelegate {
+
+  func initNotification() {
     UNUserNotificationCenter.current().delegate = self
     let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
     UNUserNotificationCenter.current().requestAuthorization(
       options: authOptions
     ) { _, _ in }
-    application.registerForRemoteNotifications()
+#if os(iOS)
+        UIApplication.shared.registerForRemoteNotifications()
+#elseif os(macOS)
+        NSApplication.shared.registerForRemoteNotifications()
+#endif
     Messaging.messaging().delegate = self
-    
-    // Will be used everytime so init here will be faster
+  }
+
+  /// Will be used everytime so init here will be faster
+  func initData() {
     CATEGORIES = [
       ItemCategory(icon: "wine-glass",
                    key: "CATEGORY_ALCOHOL"),
@@ -82,8 +138,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     for category in CATEGORIES {
       CATEGORIES_DICT[category.key] = category
     }
-    
-    return true
   }
 }
 
@@ -91,20 +145,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 // https://firebase.google.com/docs/cloud-messaging/ios/receive?authuser=0
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
-  func application(_ application: UIApplication,
-                   didReceiveRemoteNotification userInfo: [AnyHashable: Any],
-                   fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult)
-                     -> Void) {
-    print(userInfo)
-    Messaging.messaging().appDidReceiveMessage(userInfo)
-
-    completionHandler(.noData)
-  }
-  
-  func application(_ application: UIApplication,
-                   didFailToRegisterForRemoteNotificationsWithError error: Error) {
-    print("Unable to register for remote notifications: \(error.localizedDescription)")
-  }
   
   func userNotificationCenter(_ center: UNUserNotificationCenter,
                               willPresent notification: UNNotification,
@@ -125,15 +165,14 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     
     completionHandler()
   }
-  
-  func application(_ application: UIApplication,
-                   didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-    Messaging.messaging().apnsToken = deviceToken
-  }
 
   private func process(_ notification: UNNotification) {
     let userInfo = notification.request.content.userInfo
+#if os(iOS)
     UIApplication.shared.applicationIconBadgeNumber = 0
+#elseif os(macOS)
+    NSApplication.shared.dockTile.showsApplicationBadge = false
+#endif
     Messaging.messaging().appDidReceiveMessage(userInfo)
   }
 }
