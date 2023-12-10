@@ -22,15 +22,6 @@ struct ListForm: View {
   
   @State var loading = false
   
-  var colors = [
-    "#0079FF", "#004EA2", "#15A0B8",
-    "#1F8537", "#6610F0", "#FB7C13",
-    "#E83C8A", "#6D42C1", "#DC3545",
-    "#1FC896", "#FFC106",
-    "FORM_LIST_COLOR_DEFAULT".localized,
-    "FORM_LIST_COLOR_CUSTOM".localized,
-  ]
-  
   var body: some View {
     ZStack {
       List {
@@ -41,7 +32,7 @@ struct ListForm: View {
         Section(){
           TextField("FORM_LIST_COLOR", text: $color)
           Picker("FORM_LIST_COLOR_SELECT", selection: $colorSelect){
-            ForEach(colors, id: \.self) {
+            ForEach(listFormColors, id: \.self) {
               Text($0)
                 .foregroundColor(getListColor(color: $0))
             }
@@ -132,7 +123,7 @@ struct ListForm: View {
             name = editingItem.name
             icon = editingItem.icon
             color = editingItem.color
-            colorSelect = colors.last!
+            colorSelect = listFormColors.last!
 
             for user in sharedUsers {
               sharedToUsers.append(user.email)

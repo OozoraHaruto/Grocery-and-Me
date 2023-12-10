@@ -16,6 +16,16 @@ enum MenuItems: CaseIterable, Identifiable {
   case settings
 }
 
+// MARK: - List Form
+let listFormColors = [
+  "#0079FF", "#004EA2", "#15A0B8",
+  "#1F8537", "#6610F0", "#FB7C13",
+  "#E83C8A", "#6D42C1", "#DC3545",
+  "#1FC896", "#FFC106",
+  "FORM_LIST_COLOR_DEFAULT".localized,
+  "FORM_LIST_COLOR_CUSTOM".localized,
+]
+
 // MARK: - UI
 // MARK: Padding
 let PADDING_STACK:CGFloat = 10
