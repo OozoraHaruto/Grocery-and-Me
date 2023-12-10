@@ -34,7 +34,8 @@ struct ProfileView: View {
         }
       }
       .frame(width: ICON_HEIGHT_PROFILE, height: ICON_HEIGHT_PROFILE)
-      
+      .padding()
+
       Text(auth.name!)
         .font(.largeTitle)
       

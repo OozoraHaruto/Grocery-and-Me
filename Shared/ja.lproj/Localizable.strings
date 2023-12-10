@@ -16,6 +16,9 @@
 "UI_DELETE" = "削除する";
 "UI_SAVE" = "保存する";
 
+// MARK: - HOME
+"MENU" = "メニュー";
+
 // MARK: - Auth
 "EMAIL" = "メール";
 "PASSWORD" = "パスワード";

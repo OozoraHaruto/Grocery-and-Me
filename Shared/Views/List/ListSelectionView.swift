@@ -20,92 +20,90 @@ struct ListSelectionView: View {
   @State var pushedView = false
   
   var body: some View {
-    NavigationView {
-      VStack{
-        if (listsObserver.createdLists == nil ||
-            listsObserver.sharedLists == nil) {
-          Text("LOADING")
+    VStack{
+      if (listsObserver.createdLists == nil ||
+          listsObserver.sharedLists == nil) {
+        Text("LOADING")
+          .font(.headline)
+          .foregroundColor(.bootGray)
+      } else if (listsObserver.createdLists!.count <= 0 &&
+                 listsObserver.sharedLists!.count <= 0) {
+        VStack(alignment: .center, spacing: PADDING_STACK) {
+          Text("NO_LIST")
             .font(.headline)
             .foregroundColor(.bootGray)
-        } else if (listsObserver.createdLists!.count <= 0 &&
-                   listsObserver.sharedLists!.count <= 0) {
-          VStack(alignment: .center, spacing: PADDING_STACK) {
-            Text("NO_LIST")
-              .font(.headline)
-              .foregroundColor(.bootGray)
-            
-            Button{
-              presentedCreateView = !presentedCreateView
-            } label: {
-              Text("LIST_ADD")
-            }
-          }
-        } else {
-          List{
-            Section(){
-              ForEach(listsObserver.createdLists!, id: \.self) { item in
-                ListCellView(listItem: item,
-                             editingList: $editingList)
-                  .onTapGesture() { pushingItem = item }
-              }.onDelete(perform: delete)
-            }
-            
-            Section(){
-              ForEach(listsObserver.sharedLists!, id: \.self) { item in
-                ListCellView(listItem: item,
-                             editingList: $editingList)
-                  .onTapGesture() { pushingItem = item }
-              }.onDelete(perform: leaveList)
-            }
-          }
-        }
-        
-        NavigationLink(destination: ListDataWrapperView(listInfo: pushingItem,
-                                                        themeColor: pushingItem?.getColor() ?? .bootBlue),
-                       isActive: $pushedView) {
-          EmptyView()
-        }
-      }.sheet(isPresented: $presentedCreateView) {
-        ListAdd(presented: $presentedCreateView,
-                listsObserver: listsObserver)
-      }.sheet(isPresented: $presentEditingView, onDismiss: {
-        editingList = nil
-      }){
-        ListInfoView(presented: $presentEditingView,
-                     listsObserver: listsObserver,
-                     viewingItem: editingList!)
-      }
-#if os(iOS)
-      .listStyle(.grouped)
-#endif
-      .navigationTitle("LISTS")
-      .toolbar() {
-        if ((listsObserver.createdLists ?? []).count > 0 ||
-            (listsObserver.sharedLists ?? []).count > 0) {
+
           Button{
             presentedCreateView = !presentedCreateView
           } label: {
-            Image(systemName: "plus")
-          }.foregroundColor(.blue)
-        } else {
-          EmptyView()
+            Text("LIST_ADD")
+          }
+        }
+      } else {
+        List{
+          Section(){
+            ForEach(listsObserver.createdLists!, id: \.self) { item in
+              ListCellView(listItem: item,
+                           editingList: $editingList)
+            }.onDelete(perform: delete)
+          }
+
+          Section(){
+            ForEach(listsObserver.sharedLists!, id: \.self) { item in
+              ListCellView(listItem: item,
+                           editingList: $editingList)
+            }.onDelete(perform: leaveList)
+          }
         }
       }
-      .onChange(of: auth.uid) {newValue in
-        listsObserver.listen(auth.uid)
-      }.onChange(of: pushingItem) {newValue in
-        pushedView = (newValue != nil)
-        navBarObserver.setNavBar((newValue == nil))
-      }.onChange(of: pushedView){
-        if (!$0) {
-          pushingItem = nil
-        }
-      }.onChange(of: editingList) {newValue in
-        presentEditingView = (newValue != nil)
-      }.onAppear(perform: {
-        listsObserver.listen(auth.uid)
-      })
+    }.sheet(isPresented: $presentedCreateView) {
+      ListAdd(presented: $presentedCreateView,
+              listsObserver: listsObserver)
+#if os(macOS)
+      .frame(idealWidth: (NSApp.keyWindow?.contentView?.bounds.width ?? 500) * 0.8,
+             idealHeight: (NSApp.keyWindow?.contentView?.bounds.height ?? 500) * 0.8)
+#endif
+    }.sheet(isPresented: $presentEditingView, onDismiss: {
+      editingList = nil
+    }){
+      ListInfoView(presented: $presentEditingView,
+                   listsObserver: listsObserver,
+                   viewingItem: editingList!)
+#if os(macOS)
+      .frame(idealWidth: (NSApp.keyWindow?.contentView?.bounds.width ?? 500) * 0.8,
+             idealHeight: (NSApp.keyWindow?.contentView?.bounds.height ?? 500) * 0.8)
+#endif
     }
+#if os(iOS)
+    .listStyle(.grouped)
+#endif
+    .navigationTitle("LISTS")
+    .toolbar() {
+      if ((listsObserver.createdLists ?? []).count > 0 ||
+          (listsObserver.sharedLists ?? []).count > 0) {
+        Button{
+          presentedCreateView = !presentedCreateView
+        } label: {
+          Image(systemName: "plus")
+        }.foregroundColor(.blue)
+      } else {
+        EmptyView()
+      }
+    }
+    .onChange(of: auth.uid) {newValue in
+      listsObserver.listen(auth.uid)
+    }.onChange(of: pushingItem) {newValue in
+      pushedView = (newValue != nil)
+      navBarObserver.setNavBar((newValue == nil))
+    }.onChange(of: pushedView){
+      if (!$0) {
+        pushingItem = nil
+      }
+    }.onChange(of: editingList) {newValue in
+      presentEditingView = (newValue != nil)
+    }.onAppear(perform: {
+      listsObserver.listen(auth.uid)
+    })
   }
   
   func delete(at offsets: IndexSet) {
@@ -136,70 +134,75 @@ struct ListCellView: View {
   }
   
   var body: some View {
-    HStack{
-      if (listItem.icon != "") {
-        AsyncImage(url: URL(string: listItem.icon)) { phase in
-          if let image = phase.image {
-            image
-              .resizable()
-              .aspectRatio(contentMode: .fill)
-              .frame(width: ICON_HEIGHT_LIST_CELL, height: ICON_HEIGHT_LIST_CELL)
-              .cornerRadius(5)
-          } else if phase.error != nil {
-            FontAwesomeSVG(svgName: "binary-slash",
-                           frameHeight: ICON_HEIGHT_LIST_CELL,
-                           color: Color.red.getCGColor(),
-                           actAsSolid: false)
-          }else {
-            ProgressView()
+    NavigationLink {
+      ListDataWrapperView(listInfo: listItem,
+                          themeColor: listItem.getColor())
+    } label: {
+      HStack{
+        if (listItem.icon != "") {
+          AsyncImage(url: URL(string: listItem.icon)) { phase in
+            if let image = phase.image {
+              image
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: ICON_HEIGHT_LIST_CELL, height: ICON_HEIGHT_LIST_CELL)
+                .cornerRadius(5)
+            } else if phase.error != nil {
+              FontAwesomeSVG(svgName: "binary-slash",
+                             frameHeight: ICON_HEIGHT_LIST_CELL,
+                             color: Color.red.getCGColor(),
+                             actAsSolid: false)
+            }else {
+              ProgressView()
+            }
+          }
+          .frame(width: ICON_HEIGHT_LIST_CELL, height: ICON_HEIGHT_LIST_CELL)
+        } else if listItem.sharedWithCurrentUser! && listItem.creatorObj != nil {
+          AsyncImage(url: URL(string: listItem.creatorObj!.profileImageLink)) { phase in
+            if let image = phase.image {
+              image
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: ICON_HEIGHT_LIST_CELL, height: ICON_HEIGHT_LIST_CELL)
+                .cornerRadius(5)
+            } else if phase.error != nil {
+              FontAwesomeSVG(svgName: "binary-slash",
+                             frameHeight: ICON_HEIGHT_LIST_CELL,
+                             color: Color.red.getCGColor(),
+                             actAsSolid: false)
+            }else {
+              ProgressView()
+            }
+          }
+          .frame(width: ICON_HEIGHT_LIST_CELL, height: ICON_HEIGHT_LIST_CELL)
+        } else {
+          FontAwesomeSVG(svgName: "list-check",
+                         frameHeight: ICON_HEIGHT_LIST_CELL,
+                         color: color.getCGColor(),
+                         actAsSolid: true)
+            .frame(width: ICON_HEIGHT_LIST_CELL, height: ICON_HEIGHT_LIST_CELL, alignment: .center)
+        }
+        VStack(alignment: .leading) {
+          Text(listItem.name)
+            .font(.body)
+          if listItem.sharedWithCurrentUser! && listItem.creatorObj != nil {
+            Text("CREATED_BY \(listItem.creatorObj!.name)")
+                .font(.caption)
+          } else if !listItem.sharedWithCurrentUser! && !listItem.sharedToUsers.isEmpty {
+            Text("LIST_SHARED_WITH_WITH_COUNT \(listItem.sharedToUsers.count)")
+                .font(.caption)
           }
         }
-        .frame(width: ICON_HEIGHT_LIST_CELL, height: ICON_HEIGHT_LIST_CELL)
-      } else if listItem.sharedWithCurrentUser! && listItem.creatorObj != nil {
-        AsyncImage(url: URL(string: listItem.creatorObj!.profileImageLink)) { phase in
-          if let image = phase.image {
-            image
-              .resizable()
-              .aspectRatio(contentMode: .fill)
-              .frame(width: ICON_HEIGHT_LIST_CELL, height: ICON_HEIGHT_LIST_CELL)
-              .cornerRadius(5)
-          } else if phase.error != nil {
-            FontAwesomeSVG(svgName: "binary-slash",
-                           frameHeight: ICON_HEIGHT_LIST_CELL,
-                           color: Color.red.getCGColor(),
-                           actAsSolid: false)
-          }else {
-            ProgressView()
-          }
-        }
-        .frame(width: ICON_HEIGHT_LIST_CELL, height: ICON_HEIGHT_LIST_CELL)
-      } else {
-        FontAwesomeSVG(svgName: "list-check",
-                       frameHeight: ICON_HEIGHT_LIST_CELL,
-                       color: color.getCGColor(),
-                       actAsSolid: true)
-          .frame(width: ICON_HEIGHT_LIST_CELL, height: ICON_HEIGHT_LIST_CELL, alignment: .center)
-      }
-      VStack(alignment: .leading) {
-        Text(listItem.name)
-          .font(.body)
-        if listItem.sharedWithCurrentUser! && listItem.creatorObj != nil {
-          Text("CREATED_BY \(listItem.creatorObj!.name)")
-              .font(.caption)
-        } else if !listItem.sharedWithCurrentUser! && !listItem.sharedToUsers.isEmpty {
-          Text("LIST_SHARED_WITH_WITH_COUNT \(listItem.sharedToUsers.count)")
-              .font(.caption)
-        }
-      }
-      Spacer()
-      
-      Button{
-        editingList = listItem
-      } label: {
-        Image(systemName: "info.circle")
-          .foregroundColor(.bootBlue)
-      }.buttonStyle(.plain)
-    }.contentShape(Rectangle())
+        Spacer()
+
+        Button{
+          editingList = listItem
+        } label: {
+          Image(systemName: "info.circle")
+            .foregroundColor(.bootBlue)
+        }.buttonStyle(.plain)
+      }.contentShape(Rectangle())
+    }
   }
 }
 

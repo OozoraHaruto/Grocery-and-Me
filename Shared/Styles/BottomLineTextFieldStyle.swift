@@ -16,7 +16,8 @@ struct BottomLineTextFieldStyle: TextFieldStyle {
         .focused($focused)
         .padding(.horizontal, PADDING_TEXTFIELD)
         .padding(.top, PADDING_TEXTFIELD)
-    
+        .textFieldStyle(.plain)
+
       Rectangle()
         .frame(height: getRectHeight(focused), alignment: .bottom)
         .foregroundColor(getRectColor(focused))

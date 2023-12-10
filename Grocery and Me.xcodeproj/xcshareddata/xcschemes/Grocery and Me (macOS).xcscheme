@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "64770F61280AA52500DD1975"
+               BlueprintIdentifier = "64770F67280AA52500DD1975"
                BuildableName = "Grocery and Me.app"
-               BlueprintName = "Grocery and Me (iOS)"
+               BlueprintName = "Grocery and Me (macOS)"
                ReferencedContainer = "container:Grocery and Me.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -43,9 +43,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "64770F61280AA52500DD1975"
+            BlueprintIdentifier = "64770F67280AA52500DD1975"
             BuildableName = "Grocery and Me.app"
-            BlueprintName = "Grocery and Me (iOS)"
+            BlueprintName = "Grocery and Me (macOS)"
             ReferencedContainer = "container:Grocery and Me.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -60,9 +60,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "64770F61280AA52500DD1975"
+            BlueprintIdentifier = "64770F67280AA52500DD1975"
             BuildableName = "Grocery and Me.app"
-            BlueprintName = "Grocery and Me (iOS)"
+            BlueprintName = "Grocery and Me (macOS)"
             ReferencedContainer = "container:Grocery and Me.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

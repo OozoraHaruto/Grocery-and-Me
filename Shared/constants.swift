@@ -7,6 +7,15 @@
 
 import SwiftUI
 
+// MARK: - Navigation
+enum MenuItems: CaseIterable, Identifiable {
+  var id: String { UUID().uuidString }
+
+  case list
+  case profile
+  case settings
+}
+
 // MARK: - UI
 // MARK: Padding
 let PADDING_STACK:CGFloat = 10

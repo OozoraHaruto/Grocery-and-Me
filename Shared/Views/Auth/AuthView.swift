@@ -40,22 +40,26 @@ struct AuthView: View {
           // Input boxes
           if (!loggingIn) {
             TextField("NAME", text: $name)
-              .textFieldStyle(BottomLineTextFieldStyle())
-              .font(.body)
+            .textFieldStyle(BottomLineTextFieldStyle())
+            .font(.body)
 #if os(iOS)
-              .keyboardType(.default)
+            .keyboardType(.default)
 #endif
           }
           TextField("EMAIL", text: $email)
-            .textFieldStyle(BottomLineTextFieldStyle())
-            .font(.body)
+          .textFieldStyle(BottomLineTextFieldStyle())
+          .font(.body)
 #if os(iOS)
-            .keyboardType(.emailAddress)
+          .keyboardType(.emailAddress)
 #endif
+
           SecureField("PASSWORD", text: $password)
-            .font(.body)
-            .textFieldStyle(BottomLineTextFieldStyle())
-          
+          .font(.body)
+          .textFieldStyle(BottomLineTextFieldStyle())
+          .onSubmit {
+            loginOrSignUp(name, email, password, loggingIn)
+          }
+
           // Action buttons
           Button{
             loginOrSignUp(name, email, password, loggingIn)
@@ -84,8 +88,10 @@ struct AuthView: View {
               .frame(minWidth: 0, maxWidth: .infinity)
               .background(Color.bootBlue)
               .cornerRadius(BORDER_RADIUS_BUTTON_AUTH)
-          }.disabled(loading)
-          
+          }
+          .disabled(loading)
+          .buttonStyle(.plain)
+
           HStack{
             Button{
               loggingIn = !loggingIn

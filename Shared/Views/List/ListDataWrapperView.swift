@@ -44,7 +44,8 @@ struct ListDataWrapperView: View {
           .textFieldStyle(.roundedBorder)
           .submitLabel(.return)
           .onSubmit() { addItem() }
-        
+          .textFieldStyle(.plain)
+
         if editing {
           Button {
             editing = false
@@ -56,7 +57,12 @@ struct ListDataWrapperView: View {
         }
         
         Spacer(minLength: PADDING_STACK)
-      }.padding(.bottom, PADDING_STACK)
+      }
+#if os(iOS)
+      .padding(.bottom, PADDING_STACK)
+#else
+      .padding(PADDING_STACK)
+#endif
       Divider()
       
       if itemsObserver.items == nil ||

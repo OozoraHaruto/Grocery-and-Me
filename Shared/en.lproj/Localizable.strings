@@ -16,6 +16,9 @@
 "UI_DELETE" = "Delete";
 "UI_SAVE" = "Save";
 
+// MARK: - HOME
+"MENU" = "Menu";
+
 // MARK: - Auth
 "EMAIL" = "E-mail";
 "PASSWORD" = "Password";

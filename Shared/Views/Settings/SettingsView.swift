@@ -36,32 +36,30 @@ struct SettingsView: View {
   ]
   
   var body: some View {
-    NavigationView{
-      VStack (alignment: .leading, spacing: PADDING_STACK) {
-        List {
-          Section(header: Text("USAGE_HEADER_ICON")){
-            ForEach(icons, id: \.id) {
-              SettingsExternalProjectView(project: $0)
-            }
-          }
-          
-          Section(header: Text("USAGE_HEADER_PACKAGES")){
-            ForEach(packages, id: \.id) {
-              SettingsExternalProjectView(project: $0)
-            }
-          }
-          
-          Section(footer: Text(String.localizedStringWithFormat("VERSION".localized,
-            (Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String)!,
-            (Bundle.main.infoDictionary?["CFBundleVersion"] as? String)!))){
-            EmptyView()
+    VStack (alignment: .leading, spacing: PADDING_STACK) {
+      List {
+        Section(header: Text("USAGE_HEADER_ICON")){
+          ForEach(icons, id: \.id) {
+            SettingsExternalProjectView(project: $0)
           }
         }
+
+        Section(header: Text("USAGE_HEADER_PACKAGES")){
+          ForEach(packages, id: \.id) {
+            SettingsExternalProjectView(project: $0)
+          }
+        }
+
+        Section(footer: Text(String.localizedStringWithFormat("VERSION".localized,
+          (Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String)!,
+          (Bundle.main.infoDictionary?["CFBundleVersion"] as? String)!))){
+          EmptyView()
+        }
+      }
 #if os(iOS)
-        .listStyle(.grouped)
+      .listStyle(.grouped)
 #endif
-      }.navigationTitle("TAB_SETTINGS")
-    }
+    }.navigationTitle("TAB_SETTINGS")
   }
 }
 
