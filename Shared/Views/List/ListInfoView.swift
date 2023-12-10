@@ -12,7 +12,6 @@ struct ListInfoView: View {
   @Binding var presented: Bool
   @ObservedObject var listsObserver: ListsObv
   @State var viewingItem: GroceryList
-  @State var pushedView: Bool = false
   
   var body: some View {
     NavigationView {
@@ -79,7 +78,7 @@ struct ListInfoView: View {
             Text("LIST_LEAVE")
           }.foregroundColor(.red)
         } else {
-          NavigationLink("UI_EDIT", isActive: $pushedView) {
+          NavigationLink("UI_EDIT") {
             ListForm(presented: $presented,
                      listsObserver: listsObserver,
                      editingItem: viewingItem)
